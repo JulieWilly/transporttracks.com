@@ -1,0 +1,20 @@
+<div
+    class="rounded-lg p-6 bg-gray-200 w-full shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group overflow-hidden">
+    <!-- Main Content -->
+    <span class="p-2 bg-white rounded-sm"><i class="fa-solid fa-bookmark"></i></span>
+    <div class="mb-4 mt-6">
+        <p class="text-3xl font-bold text-gray-600 ">{{ amount }}</p>
+        <p class="text-gray-600 mt-4">{{ title }}</p>
+    </div>
+
+    <!-- Bottom Section with Slide-up Animation -->
+    <div class="pt-4 border-t border-gray-100 transform transition-all duration-500 group-hover:-translate-y-2">
+
+
+        <!-- View More Button (hidden by default, shows on hover) -->
+        <button
+            class="w-full py-2 bg-blue-600 text-white rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 ">
+            View Details
+        </button>
+    </div>
+</div>
