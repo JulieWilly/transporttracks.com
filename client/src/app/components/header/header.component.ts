@@ -6,8 +6,15 @@ import { NAVIGATION_ITEMS } from './navigationLinksData';
   selector: 'app-header',
   imports: [RouterLink],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-navItems = NAVIGATION_ITEMS;
+  navItems = NAVIGATION_ITEMS;
+
+  // header toggle
+  isMobileMenuOpen = false;
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
 }
