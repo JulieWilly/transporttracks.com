@@ -1,22 +1,18 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
-
+import { FooterComponent } from './components/footer/footer.component';
+import { NAVIGATION_ITEMS } from './components/header/navigationLinksData';
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, RouterOutlet],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'client';
   isServerRunning = true;
-  operatingSystems = [{id: 'win', name: 'Windows'}, {id: 'osx', name: 'MacOS'}, {id: 'linux', name: 'Linux'}];
-  isEditable = true;
 
-  onSubmit() {
-    alert('Documents submitted successfully.');
-  }
+  navItems = NAVIGATION_ITEMS;
 }
-

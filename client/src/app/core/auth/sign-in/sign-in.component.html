@@ -1,1 +1,74 @@
-<p>sign-in works!</p>
+<!-- sign-in.component.html -->
+<div class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-md">
+        <div class="text-center">
+            <h1 class="text-5xl font-extrabold text-indigo-600">MetaMint</h1>
+            <p class="mt-2 text-lg font-light p-4 text-gray-600">YOUR BUSINESS GROWTH PARTNER</p>
+            <p class="mt-2 text-sm  text-gray-600">META MINT LOGISTICS</p>
+
+        </div>
+
+        <div class="mt-8 bg-white py-8 px-6 shadow-lg rounded-lg">
+            <form class="space-y-6" [formGroup]="userDetails" (ngSubmit)="onSubmit()">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
+                    <div class="mt-1">
+                        <input id="email" name="email" type="email" autocomplete="email" required
+                            class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            formControlName="email">
+                    </div>
+                    <div *ngIf="userDetails.get('Email')?.errors && userDetails.get('Email')?.touched"
+                        class="error-message">
+                        <span *ngIf="userDetails.get('Email')?.errors?.['required']">Email is required</span>
+                        <span *ngIf="userDetails.get('Email')?.errors?.['Email']">Please enter a valid
+                            Email</span>
+                    </div>
+                    @if (userDetails.get('email')?.errors && userDetails.get('email')?.touched) {
+                    <div class="error-message">
+                        @if (userDetails.get('email')?.hasError('required')) {
+                        <span class="text-red-500">email is required</span>
+                        }
+                        @if (userDetails.get('email')?.hasError('email')) {
+                        <span class="text-red-500">Please enter a valid email</span>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <div class="mt-1">
+                        <input id="password" name="password" type="password" autocomplete="current-password" required
+                            class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            formControlName="password">
+                    </div>
+                    @if (userDetails.get('password')?.errors && userDetails.get('password')?.touched) {
+                    <div class="error-message">
+                        @if (userDetails.get('password')?.hasError('required')) {
+                        <span class="text-red-500">Password is required</span>
+                        }
+                        @if (userDetails.get('password')?.hasError('password')) {
+                        <span class="text-red-500">Please enter a valid password</span>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <div class="text-sm w-full flex justify-end">
+                        <a [routerLink]="['/Common/forgot-password']"
+                            class="font-medium text-indigo-600 hover:text-indigo-500">Forgot Your Password!</a>
+                    </div>
+
+                </div>
+
+                <div>
+                    <button type="submit" (click)="toDashboard()"
+                        class=" cursor-pointer w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Sign in
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
