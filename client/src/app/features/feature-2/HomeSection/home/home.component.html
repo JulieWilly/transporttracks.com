@@ -1,1 +1,12 @@
+<div class="grid md:grid-cols-4 gap-4 grid-cols-2 p-6">
+    @for(item of dashCardsItems; track item.id){
+    <app-dashboard-card [amount]="item.amount" [title]="item.cardTitle"></app-dashboard-card>
+    }
+
+</div>
+<div class="p-8">
+    <span class="text-blue-500 capitalize">Booking Chart</span>
+    <app-dashboard-line-chart></app-dashboard-line-chart>
+</div>
+
 <app-about></app-about>

@@ -1,51 +1,27 @@
-<!-- <header class="text-black">
+<header class="text-black">
     <div class="container mx-auto flex justify-center items-center p-4 border-b border-gray-200 px-6 py-2">
 
         <nav class="hidden md:flex gap-6 text-lg">
 
-            @for(link of navItems; track link.id) {
-            <a [id]="link.id" [routerLink]="link.path"
-                class="cursor-pointer hover:bg-slate-300 pr-2 pl-2 rounded-md pt-1 pb-1">
-                {{ link.label }}</a>
-            }
-            @empty{
-            <div>No Menu Items</div>
-            }
-        </nav>
-
-    </div>
-</header> -->
-
-<header class="text-black">
-    <div class="container mx-auto flex justify-between items-center p-4 border-b border-gray-200 px-6 py-2">
-        <!-- Desktop Nav -->
-        <nav class="hidden md:flex gap-6 text-lg">
-            @for(link of navItems; track link.id) {
-            <a [id]="link.id" [routerLink]="link.path"
-                class="cursor-pointer hover:bg-slate-300 pr-2 pl-2 rounded-md pt-1 pb-1">
+            @for(link of links; track link.id) {
+            <a [id]="link.numId"
+                class="nav-item cursor-pointer relative hover:bg-slate-300 pr-2 pl-2 rounded-md pt-1 pb-1"
+                (click)="toggleDropdown(link.numId)">
                 {{ link.label }}
+                <ul class="pt-2 pb-2 mt-3 w-max-auto absolute z-10 bg-slate-300 whitespace-nowrap rounded max-w-[23rem] max-h-[15rem]  overflow-y-scroll"
+                    *ngIf="link.children?.length && isDropDownOpen === link.numId">
+                    @for(child of link.children; track child.id){
+                    <li class="pt-2"><a [routerLink]="[child.path]" class=" p-2 w-full text-[1rem]">{{ child.label
+                            }}</a>
+                    </li>
+                    }
+                </ul>
             </a>
             }
             @empty{
             <div>No Menu Items</div>
             }
+
         </nav>
-
-        <!-- Mobile Menu Button -->
-        <button class="md:hidden text-2xl" (click)="toggleMobileMenu()">
-            &#9776; <!-- Hamburger icon -->
-        </button>
     </div>
-
-    <!-- Mobile Nav -->
-    <nav *ngIf="isMobileMenuOpen" class="md:hidden bg-white border-t border-gray-200 p-4">
-        @for(link of navItems; track link.id) {
-        <a [id]="link.id" [routerLink]="link.path" class="block mb-2 cursor-pointer hover:bg-slate-300 p-2 rounded-md">
-            {{ link.label }}
-        </a>
-        }
-        @empty{
-        <div>No Menu Items</div>
-        }
-    </nav>
 </header>
