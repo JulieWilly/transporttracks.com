@@ -11,8 +11,11 @@
                 <ul class="pt-2 pb-2 mt-3 w-max-auto absolute z-10 bg-slate-300 whitespace-nowrap rounded max-w-[23rem] max-h-[15rem]  overflow-y-scroll"
                     *ngIf="link.children?.length && isDropDownOpen === link.numId">
                     @for(child of link.children; track child.id){
-                    <li class="pt-2"><a [routerLink]="[child.path]" class=" p-2 w-full text-[1rem]">{{ child.label
-                            }}</a>
+                    <li class="pt-2 pb-2 hover:bg-slate-200">
+                        <a (click)="navigateTo(link.path + '/' + child.path)" class=" p-2 w-full text-[1rem]">
+                            {{ child.label }}
+                            {{ child.path }}
+                        </a>
                     </li>
                     }
                 </ul>

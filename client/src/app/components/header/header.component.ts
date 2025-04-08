@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { NAVIGATION_ITEMS, NavigationItem } from './navigationLinksData';
 
 import { NgIf } from '@angular/common';
@@ -68,4 +68,11 @@ export class HeaderComponent {
   // closeDropdown() {
   //   this.isDropDownOpen = false;
   // }
+
+  constructor(private router: Router) {}
+
+  navigateTo(path: string) {
+    console.log(path);
+    this.router.navigate([path]);
+  }
 }
