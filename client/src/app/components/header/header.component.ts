@@ -14,7 +14,7 @@ import { validateHeaderName } from 'http';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, NgIf, RouterLinkActive],
+  imports: [NgIf],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
   animations: [

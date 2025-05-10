@@ -7,6 +7,8 @@
             <a [id]="link.numId"
                 class="nav-item cursor-pointer relative hover:bg-slate-300 pr-2 pl-2 rounded-md pt-1 pb-1"
                 (click)="toggleDropdown(link.numId)">
+
+                @if(link.children){
                 {{ link.label }}
                 <ul class="pt-2 pb-2 mt-3 w-max-auto absolute z-10 bg-slate-300 whitespace-nowrap rounded max-w-[23rem] max-h-[15rem]  overflow-y-scroll"
                     *ngIf="link.children?.length && isDropDownOpen === link.numId">
@@ -14,11 +16,16 @@
                     <li class="pt-2 pb-2 hover:bg-slate-200">
                         <a (click)="navigateTo(link.path + '/' + child.path)" class=" p-2 w-full text-[1rem]">
                             {{ child.label }}
-                            {{ child.path }}
                         </a>
                     </li>
                     }
+
                 </ul>
+                }@else{
+                <a class="nav-item cursor-pointer relative hover:bg-slate-300 pr-2 pl-2 rounded-md pt-1 pb-1"
+                    (click)="navigateTo(link.path)">
+                    {{ link.label }}</a>
+                }
             </a>
             }
             @empty{

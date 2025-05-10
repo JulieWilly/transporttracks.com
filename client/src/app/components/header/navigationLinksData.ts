@@ -8,7 +8,7 @@ export interface NavigationItem {
 }
 
 export const NAVIGATION_ITEMS: NavigationItem[] = [
-  { id: 'nav-home', numId: 1, label: 'Home', path: '/dashboard' },
+  { id: 'nav-home', numId: 1, label: 'Home', path: 'Common/dashboard' },
   {
     id: 'nav-booking',
     numId: 2,
@@ -397,27 +397,24 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
         label: 'Bulk Receive',
         path: 'bulkreceive/manage_bulk_received_amounts',
       },
+      {
+        id: 'nav-bulk-payment',
+        numId: 16,
+        label: 'Bulk Payments',
+        path: 'bulkpayment/manage_bulk_payments',
+      },
     ],
   },
   {
     id: 'nav-reports',
     numId: 8,
     label: 'Reports',
-    path: '/reports',
-    children: [
-      {
-        id: 'nav-reports-daily',
-        numId: 81,
-        label: 'Daily',
-        path: '/reports/daily',
-      },
-      {
-        id: 'nav-reports-weekly',
-        numId: 82,
-        label: 'Weekly',
-        path: '/reports/weekly',
-      },
-    ],
+    path: 'reports/managereports',
   },
-  { id: 'nav-settings', numId: 9, label: 'Settings', path: '/settings' },
+  {
+    id: 'nav-settings',
+    numId: 9,
+    label: 'Settings',
+    path: 'settings/settingsmanagement',
+  },
 ];

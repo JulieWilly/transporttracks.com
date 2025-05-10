@@ -15,11 +15,9 @@ import { BulkBookingPrintLokenathExpressComponent } from './features/feature-2/H
 import { MarketingComponent } from './features/feature-2/HomeSection/booking/marketing/marketing.component';
 import { ManifestRegisterComponent } from './features/feature-2/loading/loading/manifest-register/manifest-register.component';
 import { ManifestTransitRegisterComponent } from './features/feature-2/loading/loading/manifest-transit-register/manifest-transit-register.component';
-import path from 'path';
 import { VehicleRegisterComponent } from './features/feature-2/loading/loading/vehicle-register/vehicle-register.component';
 import { ManageLoadingSlipsComponent } from './features/feature-2/loading/loading/manage-loading-slips/manage-loading-slips.component';
 import { VehicleHireRegisterComponent } from './features/feature-2/loading/loading/vehicle-hire-register/vehicle-hire-register.component';
-import { compileFunction } from 'vm';
 import { LocalVehicleHireRegisterComponent } from './features/feature-2/loading/loading/local-vehicle-hire-register/local-vehicle-hire-register.component';
 import { FullLoadVehicleHireRegisterComponent } from './features/feature-2/loading/loading/full-load-vehicle-hire-register/full-load-vehicle-hire-register.component';
 import { DriverRegisterComponent } from './features/feature-2/loading/loading/driver-register/driver-register.component';
@@ -47,10 +45,6 @@ import { DirectDeliveriesComponent } from './features/feature-2/delivery/direct-
 import { ThirdPartyDeliveryRegisterComponent } from './features/feature-2/delivery/third-party-delivery-register/third-party-delivery-register.component';
 import { DoorThirdPartyDeliveryPendingPaymentsComponent } from './features/feature-2/delivery/door-third-party-delivery-pending-payments/door-third-party-delivery-pending-payments.component';
 import { BarcodeDeliveryRegisterComponent } from './features/feature-2/delivery/barcode-delivery-register/barcode-delivery-register.component';
-import { AccountsComponent } from './features/feature-2/delivery/accounts/accounts.component';
-import { ManagePurchasesComponent } from './features/feature-2/delivery/manage-purchases/manage-purchases.component';
-import { MoneyRecieptComponent } from './features/feature-2/delivery/money-reciept/money-reciept.component';
-import { InvoicesComponent } from './features/feature-2/delivery/accounts/invoices/invoices.component';
 import { PaymentVouchersComponent } from './features/feature-2/accounts/payment-vouchers/payment-vouchers.component';
 import { ManageSalesComponent } from './features/feature-2/accounts/manage-sales/manage-sales.component';
 import { DebitNoteEntryComponent } from './features/feature-2/accounts/debit-note-entry/debit-note-entry.component';
@@ -61,6 +55,13 @@ import { BulkInvoicePrintComponent } from './features/feature-2/accounts/bulk-in
 import { ManageAccountGroupsComponent } from './features/feature-2/accounts/manage-account-groups/manage-account-groups.component';
 import { JournalEntryComponent } from './features/feature-2/accounts/journal-entry/journal-entry.component';
 import { BulkReceiveComponent } from './features/feature-2/accounts/bulk-receive/bulk-receive.component';
+import { BulkPaymentsComponent } from './features/feature-2/accounts/bulk-payments/bulk-payments.component';
+import { AccountsComponent } from './features/feature-2/accounts/accounts.component';
+import { ManagePurchasesComponent } from './features/feature-2/accounts/manage-purchases/manage-purchases.component';
+import { MoneyRecieptComponent } from './features/feature-2/accounts/money-reciept/money-reciept.component';
+import { InvoicesComponent } from './features/feature-2/accounts/invoices/invoices.component';
+import { ReportsComponent } from './features/feature-2/reports/reports.component';
+import { SettingsComponent } from './features/feature-2/settings/settings.component';
 
 export const routes: Routes = [
   {
@@ -342,7 +343,7 @@ export const routes: Routes = [
           },
           {
             path: 'bulkpayment/manage_bulk_payments',
-            component: BulkReceiveComponent,
+            component: BulkPaymentsComponent,
           },
         ],
       },
@@ -350,7 +351,16 @@ export const routes: Routes = [
         path: 'marketing/dashboard',
         component: MarketingComponent,
       },
+      {
+        path: 'reports/managereports',
+        component: ReportsComponent,
+      },
+      {
+        path: 'settings/settingsmanagement',
+        component: SettingsComponent,
+      },
     ],
   },
+
   { path: '**', redirectTo: 'Common/sign-in' },
 ];
