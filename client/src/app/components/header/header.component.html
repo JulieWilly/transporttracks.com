@@ -1,37 +1,44 @@
-<header class="text-black">
-    <div class="container mx-auto flex justify-center items-center p-4 border-b border-gray-200 px-6 py-2">
+<header class="text-black  h-14  bg-[#F8F9FB]">
+    <nav class="w-full flex h-full pl-20">
+        <ul class="pl-1 pr-1 text-black items-center justify-start h-full" *ngFor="let navigation of navigationLinks">
+            <li class="hover:text-gray-500 h-full group grid place-content-center  relative"
+                *ngIf="navigation.dropDown">
+                <a href="#">{{ navigation.label }}</a>
 
-        <nav class="hidden md:flex gap-6 text-lg">
+                <div class="top-full hidden absolute group-hover:block hover:block group/item shadow-lg z-10">
+                    <!-- <div class="absolute -top-5 left-0">
+                        <div class="py-3">
+                            <div class="w-4 h-4 absolute mt-1 bg-black rotate-45">
+                            </div>
+                        </div>
+                    </div> -->
+                    <ul class="flex flex-col bg-[#F8F9FB] pt-1 pb-1 w-[14rem]" *ngFor="let item of operations">
+                        <li class="hover:bg-white flex p-2 flex-row group relative items-center text-black justify-between hover:text-gray-500"
+                            (mouseenter)="activeItem = item" (mouseleave)="activeItem = null">
+                            <a href="#">
+                                {{ item }}</a>
+                            <mat-icon aria-hidden="false" aria-label="Next page icon"
+                                fontIcon="chevron_right"></mat-icon>
+                            <div class="left-full absolute top-0  shadow-lg border group-hover:block hover:block z-10"
+                                *ngIf="activeItem === item">
+                                <ul class="flex flex-col bg-[#F8F9FB] p-3 w-[14rem] list-none">
+                                    <li
+                                        class="hover:bg-white flex p-2 text-black hover:text-gray-500 flex-row items-center justify-between ">
+                                        <a href="#">Booking</a>
+                                    </li>
+                                    <li class="hover:bg-white p-2 flex flex-row items-center justify-between"><a
+                                            href="#">Loading</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="h-full" *ngIf="!navigation.dropDown"><a [href]="navigation.link"
+                    class="hover:text-gray-500 h-full grid place-content-center p-2">
+                    {{ navigation.label }} </a></li>
+        </ul>
+    </nav>
 
-            @for(link of links; track link.id) {
-            <a [id]="link.numId"
-                class="nav-item cursor-pointer relative hover:bg-slate-300 pr-2 pl-2 rounded-md pt-1 pb-1"
-                (click)="toggleDropdown(link.numId)">
-
-                @if(link.children){
-                {{ link.label }}
-                <ul class="pt-2 pb-2 mt-3 w-max-auto absolute z-10 bg-slate-300 whitespace-nowrap rounded max-w-[23rem] max-h-[15rem]  overflow-y-scroll"
-                    *ngIf="link.children?.length && isDropDownOpen === link.numId">
-                    @for(child of link.children; track child.id){
-                    <li class="pt-2 pb-2 hover:bg-slate-200">
-                        <a (click)="navigateTo(link.path + '/' + child.path)" class=" p-2 w-full text-[1rem]">
-                            {{ child.label }}
-                        </a>
-                    </li>
-                    }
-
-                </ul>
-                }@else{
-                <a class="nav-item cursor-pointer relative hover:bg-slate-300 pr-2 pl-2 rounded-md pt-1 pb-1"
-                    (click)="navigateTo(link.path)">
-                    {{ link.label }}</a>
-                }
-            </a>
-            }
-            @empty{
-            <div>No Menu Items</div>
-            }
-
-        </nav>
-    </div>
 </header>

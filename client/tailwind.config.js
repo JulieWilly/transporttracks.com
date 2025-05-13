@@ -2,11 +2,7 @@
 module.exports = {
   content: ["./src/**/*.{html,ts}"],
   theme: {
-    extend: {
-      fontFamily: {
-        customFont: ["Kanit", "sans-serif"],
-      },
-    },
+    extend: {},
   },
   plugins: [],
 };
