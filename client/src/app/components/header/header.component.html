@@ -1,9 +1,9 @@
 <header class="text-black  h-14  bg-[#F8F9FB]">
     <nav class="w-full flex h-full pl-20">
-        <ul class="pl-1 pr-1 text-black items-center justify-start h-full" *ngFor="let navigation of navigationLinks">
-            <li class="hover:text-gray-500 h-full group grid place-content-center  relative"
-                *ngIf="navigation.dropDown">
-                <a href="#">{{ navigation.label }}</a>
+        <ul class="pl-1 pr-1 text-black flex items-center justify-center h-full" *ngFor="let navigation of links">
+            <li class="hover:text-gray-500 h-full group grid place-content-center  p-2  relative cursor-pointer"
+                *ngIf="navigation.dropDown && navigation.children as children">
+                <span>{{ navigation.label }}</span>
 
                 <div class="top-full hidden absolute group-hover:block hover:block group/item shadow-lg z-10">
                     <!-- <div class="absolute -top-5 left-0">
@@ -12,30 +12,31 @@
                             </div>
                         </div>
                     </div> -->
-                    <ul class="flex flex-col bg-[#F8F9FB] pt-1 pb-1 w-[14rem]" *ngFor="let item of operations">
-                        <li class="hover:bg-white flex p-2 flex-row group relative items-center text-black justify-between hover:text-gray-500"
-                            (mouseenter)="activeItem = item" (mouseleave)="activeItem = null">
-                            <a href="#">
-                                {{ item }}</a>
-                            <mat-icon aria-hidden="false" aria-label="Next page icon"
-                                fontIcon="chevron_right"></mat-icon>
-                            <div class="left-full absolute top-0  shadow-lg border group-hover:block hover:block z-10"
-                                *ngIf="activeItem === item">
-                                <ul class="flex flex-col bg-[#F8F9FB] p-3 w-[14rem] list-none">
-                                    <li
-                                        class="hover:bg-white flex p-2 text-black hover:text-gray-500 flex-row items-center justify-between ">
-                                        <a href="#">Booking</a>
-                                    </li>
-                                    <li class="hover:bg-white p-2 flex flex-row items-center justify-between"><a
-                                            href="#">Loading</a>
-                                    </li>
-                                </ul>
+                    <ul class="bg-[#F8F9FB] pt-1 pb-1"
+                        [ngClass]="children.length > 6 ? 'grid grid-cols-3 gap-2 w-[36rem]' : 'flex flex-col w-[15rem]'">
+                        <li class="hover:bg-white flex  p-2 flex-row group relative items-center justify-between text-black hover:text-gray-500"
+                            *ngFor="let item of navigation.children" (mouseenter)="activeItem = item"
+                            (mouseleave)="activeItem = null">
+                            <a [href]="item.path" *ngIf="item.label" class="w-full">
+                                {{ item.label }}</a>
+                            <mat-icon aria-hidden="false" aria-label="Next page icon" fontIcon="chevron_right"
+                                *ngIf="item.children"></mat-icon>
+                            <div *ngIf="item.children">
+                                <div class="left-full absolute top-0  shadow-lg  group-hover:block hover:block z-10 w-[36rem]"
+                                    *ngIf="activeItem === item">
+                                    <ul class=" bg-[#F8F9FB] list-none grid grid-cols-2 w-full">
+                                        <li class="hover:bg-white  p-2 text-black hover:text-gray-500 w-full "
+                                            *ngFor="let lastChild of item.children">
+                                            <a [href]="lastChild.path">{{ lastChild.label}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </li>
                     </ul>
                 </div>
             </li>
-            <li class="h-full" *ngIf="!navigation.dropDown"><a [href]="navigation.link"
+            <li class="h-full" *ngIf="!navigation.dropDown"><a [href]="navigation.path"
                     class="hover:text-gray-500 h-full grid place-content-center p-2">
                     {{ navigation.label }} </a></li>
         </ul>

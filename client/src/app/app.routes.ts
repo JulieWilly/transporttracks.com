@@ -93,9 +93,12 @@ export const routes: Routes = [
       },
       // booking feature.
       {
-        path: 'booking',
+        path: '',
         children: [
-          { path: 'booking_register', component: BookingRegisterComponent },
+          {
+            path: 'booking/booking_register',
+            component: BookingRegisterComponent,
+          },
           { path: 'booking/list', component: BookingListComponent },
           {
             path: 'advance_bookings',
@@ -193,7 +196,7 @@ export const routes: Routes = [
 
       //dispatch
       {
-        path: 'dispatch',
+        path: '',
         children: [
           {
             path: 'outstation_despatch',
@@ -242,7 +245,7 @@ export const routes: Routes = [
       },
       // delivery
       {
-        path: 'delivery',
+        path: '',
         children: [
           {
             path: 'gatepass/gatepass_register',
@@ -283,7 +286,7 @@ export const routes: Routes = [
         ],
       },
       {
-        path: 'accounts',
+        path: '',
         children: [
           {
             path: 'account_list',

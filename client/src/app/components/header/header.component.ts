@@ -2,8 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { NAVIGATION_ITEMS, NavigationItem } from './navigationLinksData';
 import { MatIconModule } from '@angular/material/icon';
-
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
 import {
   trigger,
   state,
@@ -16,7 +15,7 @@ import { link } from 'fs';
 
 @Component({
   selector: 'app-header',
-  imports: [NgIf, NgFor, MatIconModule],
+  imports: [NgIf, NgFor, MatIconModule, CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
   animations: [
@@ -42,36 +41,10 @@ import { link } from 'fs';
   ],
 })
 export class HeaderComponent {
-  navigationLinks = [
-    {
-      label: 'Dashboard',
-      link: '/dashboard',
-      dropDown: false,
-    },
-    {
-      label: 'Operations',
-      link: '/operations',
-      dropDown: true,
-    },
-    {
-      label: 'Accounting',
-      link: '/accounting',
-      dropDown: false,
-    },
-    {
-      label: 'Reports',
-      link: '/reports',
-      dropDown: false,
-    },
-    {
-      label: 'Settings',
-      link: '/settings',
-      dropDown: false,
-    },
-  ];
   operations = ['Booking', 'Loading', 'Dispatch', 'Receive', 'Delivery'];
-  activeItem: string | null = null;
+  activeItem: NavigationItem | null = null;
   side_links = ['Link A', 'Link B', 'Link C', 'Link D'];
+// hasChildren: NavigationItem | null = null;/
   // navItems = NAVIGATION_ITEMS;
 
   // header toggle
@@ -107,4 +80,11 @@ export class HeaderComponent {
     console.log(path);
     this.router.navigate([path]);
   }
+  // hasChildren(item: NavigationItem): boolean {
+  //   return item.children && item.children.length > 0;
+  // }
+
+  // isDirectLink(item: NavigationItem): boolean {
+  //   return !this.hasChildren(item);
+  // }
 }
