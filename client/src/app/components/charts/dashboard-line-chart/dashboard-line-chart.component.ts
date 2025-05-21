@@ -6,10 +6,9 @@ import {
 } from 'ng2-charts';
 import { ChartConfiguration, ChartData, ChartEvent
 } from 'chart.js';
-import { MatButton } from '@angular/material/button';
 @Component({
   selector: 'app-dashboard-line-chart',
-  imports: [BaseChartDirective, MatButton, BaseChartDirective],
+  imports: [BaseChartDirective, BaseChartDirective],
   providers: [provideCharts(withDefaultRegisterables())],
   standalone: true,
   templateUrl: './dashboard-line-chart.component.html',
