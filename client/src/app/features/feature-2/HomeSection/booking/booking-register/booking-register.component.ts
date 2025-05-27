@@ -9,6 +9,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { SharableSearchInputComponent } from '../../../../ReuseableComponents/sharable-search-input/sharable-search-input.component';
+import { SharableTitleComponent } from '../../../../ReuseableComponents/sharable-title/sharable-title.component';
 
 // import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 // import { AfterViewInit, ViewChild } from '@angular/core';
@@ -29,6 +31,8 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
     MatButtonModule,
     FormsModule,
     MatPaginatorModule,
+    SharableSearchInputComponent,
+    SharableTitleComponent
   ],
 
   templateUrl: './booking-register.component.html',
