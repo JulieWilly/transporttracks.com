@@ -5,14 +5,12 @@ import { DashboardLineChartComponent } from '../../../../components/charts/dashb
 
 @Component({
   selector: 'app-home',
-  imports: [
-    DashboardCardComponent,
-    DashboardLineChartComponent,
-  ],
+  imports: [DashboardCardComponent, DashboardLineChartComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
   // dashboard cards data.
   dashCardsItems = BOOKINGS;
+  currentUser: string = 'Lord Wilfred';
 }
