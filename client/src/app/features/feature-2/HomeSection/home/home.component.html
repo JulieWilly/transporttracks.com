@@ -1,12 +1,21 @@
 <div class="pl-8 pr-8 pt-3 flex flex-col gap-4">
-    <h1 class="text-4xl font-bold text-white tracking-wide">Welcome back {{currentUser}}</h1>
-    <div class="grid md:grid-cols-4 gap-4 grid-cols-2 mt-2">
+    <app-quick-navigation currentPage="currentPage"></app-quick-navigation>
+
+    <h1 class="text-4xl font-bold text-white tracking-wide">Welcome back <span
+            class="text-blue-500">{{currentUser}}</span></h1>
+    <div class="grid md:grid-cols-4 gap-4 grid-cols-2 flex-1 mt-2">
         @for(item of dashCardsItems; track item.id){
         <app-dashboard-card [amount]="item.amount" [title]="item.cardTitle"></app-dashboard-card>
         }
     </div>
 
     <hr class="h-0.5 bg-white w-full ">
+
+    <div class="grid md:grid-cols-4 gap-4 grid-cols-2 flex-1 mt-2">
+        @for(item of bookingProgressData; track item.id){
+        <app-card2 [cardTitle]="item.cardTitle" [dataFrom]="item.current" [dataTo]="item.total"></app-card2>
+    }
+    </div>
 
     <div class="">
         <h1 class="text-xl font-bold text-white tracking-wide pb-2">Last 30 Days Booking Register Chart</h1>
