@@ -6,6 +6,7 @@ import {
 } from 'ng2-charts';
 import { ChartConfiguration, ChartData, ChartEvent
 } from 'chart.js';
+
 @Component({
   selector: 'app-dashboard-line-chart',
   imports: [BaseChartDirective, BaseChartDirective],
@@ -18,10 +19,23 @@ export class DashboardLineChartComponent {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective<'bar'> | undefined;
   // Chart data configuration
   public lineChartData: ChartConfiguration<'line'>['data'] = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+    labels: [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'Octomber',
+      'November',
+      'December',
+    ],
     datasets: [
       {
-        data: [65, 59, 80, 81, 56],
+        data: [65, 59, 80, 81, 56, 50, 43, 70, 49, 80, 91, 64],
         label: 'Sales',
         borderColor: '#3F51B5',
         backgroundColor: 'rgba(63, 81, 181, 0.2)',

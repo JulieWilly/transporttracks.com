@@ -1,12 +1,13 @@
 <div
     class="rounded-lg  bg-blue-500 w-full shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group overflow-hidden">
     <div class="ml-1 mr-0 w-full bg-gray-200 h-full rounded-lg  pl-4 pr-4">
-        <div class="flex flex-row justify-start gap-4 items-center mb-2 pt-4">
-            <span class="p-2 rounded-md bg-blue-500"><i class="fa-solid fa-bookmark"></i></span>
-            <div class=" flex flex-col gap-3">
+        <div class="flex flex-col justify-start gap-4 items-start mb-2 pt-4">
+            <div class="flex flex-row gap-2 items-start justify-start">
+                <span class="p-2 rounded-md bg-blue-500"><i class={{iconClass}}></i></span>
                 <p class="text-4xl font-bold text-gray-600 tracking-wide">{{ amount }}</p>
-                <p class="text-gray-600 text-xl font-semibold">{{ title }}</p>
             </div>
+            <p class="text-gray-600 text-xl">{{ title }}</p>
+
         </div>
 
         <div class="pt-4 border-t border-gray-100 transform transition-all duration-500 group-hover:-translate-y-2">

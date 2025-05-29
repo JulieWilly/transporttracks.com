@@ -1,26 +1,33 @@
-<div class="pl-8 pr-8 pt-3 flex flex-col gap-4">
+<div class="pl-8 pr-8 pt-3 flex flex-col gap-4 z-10">
     <app-quick-navigation currentPage="currentPage"></app-quick-navigation>
 
-    <h1 class="text-4xl font-bold text-white tracking-wide">Welcome back <span
+    <h1 class="md:text-3xl text-xl font-bold text-white tracking-wide">Welcome back <span
             class="text-blue-500">{{currentUser}}</span></h1>
-    <div class="grid md:grid-cols-4 gap-4 grid-cols-2 flex-1 mt-2">
-        @for(item of dashCardsItems; track item.id){
-        <app-dashboard-card [amount]="item.amount" [title]="item.cardTitle"></app-dashboard-card>
-        }
-    </div>
+    <main class="w-full grid md:grid-cols-3 grid-cols-1 gap-4 items-start">
+        <section class="md:col-span-2">
+            <div class="">
+                <app-dashboard-line-chart></app-dashboard-line-chart>
+            </div>
+        </section>
+        <section class="md:col-span-1">
+            <div class="grid md:grid-cols-2 gap-4 grid-cols-2 flex-1">
+                @for(item of dashCardsItems; track item.id){
+                <app-dashboard-card [amount]="item.amount" [title]="item.cardTitle"
+                    [iconClass]="item.iconClass"></app-dashboard-card>
+                }
+            </div>
+        </section>
+    </main>
 
     <hr class="h-0.5 bg-white w-full ">
 
     <div class="grid md:grid-cols-4 gap-4 grid-cols-2 flex-1 mt-2">
         @for(item of bookingProgressData; track item.id){
         <app-card2 [cardTitle]="item.cardTitle" [dataFrom]="item.current" [dataTo]="item.total"></app-card2>
-    }
+        }
     </div>
 
-    <div class="">
-        <h1 class="text-xl font-bold text-white tracking-wide pb-2">Last 30 Days Booking Register Chart</h1>
-        <app-dashboard-line-chart></app-dashboard-line-chart>
-    </div>
+    <hr class="h-0.5 bg-white w-full ">
 </div>
 
 <!-- <app-about></app-about> -->
