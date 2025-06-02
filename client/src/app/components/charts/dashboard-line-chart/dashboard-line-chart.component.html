@@ -1,4 +1,4 @@
-<div class="rounded-lg  flex flex-col gap-10 overflow-hidden z-10">
+<div class="rounded-lg  flex flex-col gap-10 overflow-hidden z-0">
     <div class="chart-container bg-gray-200 p-4 w-full rounded-lg overflow-hidden">
         <span class="capitalize text-black pt-4 font-semibold tracking-wide ">PTL Booking Count</span>
         <canvas baseChart [data]="lineChartData" [options]="lineChartOptions" [type]="'line'" class="h-full">
@@ -7,7 +7,7 @@
 
     
 
-    <div class="bg-gray-200 w-full rounded-lg p-2 overflow-hidden">
+    <div class="bg-gray-200 w-full rounded-lg p-2 overflow-hidden z-0">
         <span class="capitalize  text-black pt-4 font-semibold tracking-wide">PTL Booking Count</span>
         <canvas baseChart class="p-2" [data]="barChartData" [options]="barChartOptions" [type]="barChartType"
             (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">

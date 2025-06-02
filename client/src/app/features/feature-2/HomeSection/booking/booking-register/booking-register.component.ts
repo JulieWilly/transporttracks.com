@@ -18,6 +18,9 @@ import { SharableTitleComponent } from '../../../../ReuseableComponents/sharable
 // import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 // import { dataset } from '../../../../../data/bkRegister';
 // import { ConsignmentRecord } from '../../../../../Inrterfaces/bkRegisterInt';
+
+import { QuickNavigationComponent } from '../../../../ReuseableComponents/quick-navigation/quick-navigation.component';
+import { SharableTableComponent } from '../../../../ReuseableComponents/sharable-table/sharable-table.component';
 @Component({
   standalone: true,
   selector: 'app-booking-register',
@@ -32,7 +35,9 @@ import { SharableTitleComponent } from '../../../../ReuseableComponents/sharable
     FormsModule,
     MatPaginatorModule,
     SharableSearchInputComponent,
-    SharableTitleComponent
+    SharableTitleComponent,
+    QuickNavigationComponent,
+    SharableTableComponent,
   ],
 
   templateUrl: './booking-register.component.html',
@@ -40,8 +45,25 @@ import { SharableTitleComponent } from '../../../../ReuseableComponents/sharable
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookingRegisterComponent implements AfterViewInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  displayedColumns: string[] = [
+    '#',
+    'CN No',
+    'Consignor',
+    'Consignee',
+    'From-Via-To',
+    'Pay.',
+    'Amount',
+    'Rec.',
+    'Dis.',
+    'Due',
+    'Location',
+    'Inv. No/Dt',
+    'Status',
+    'Print',
+    'Collect',
+  ];
+
+  dataSource = new MatTableDataSource(CN_DATA);
   value = 'Clear me';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -49,56 +71,196 @@ export class BookingRegisterComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-  // displayedColumns: string[] = [
-  //   'id',
-  //   'cnNo',
-  //   'consignor',
-  //   'consignee',
-  //   'fromViaTo',
-  //   'pay',
-  //   'amount',
-  //   'rec',
-  //   'dis',
-  //   'due',
-  //   'location',
-  //   'invNoDt',
-  //   'status',
-  //   'print',
-  //   'collect',
-  // ];
-  // dataSource = new MatTableDataSource<ConsignmentRecord>(dataset);
-  // @ViewChild(MatPaginator) paginator!: MatPaginator;
-  // ngAfterViewInit() {
-  //   this.dataSource.paginator = this.paginator;
-  // }
 }
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+export interface CNRecord {
+  '#': number;
+  'CN No': string;
+  Consignor: string;
+  Consignee: string;
+  'From-Via-To': string;
+  'Pay.': string;
+  Amount: number;
+  'Rec.': number;
+  'Dis.': number;
+  Due: number;
+  Location: string;
+  'Inv. No/Dt': string;
+  Status: string;
+  Print: boolean;
+  Collect: boolean;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  { position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na' },
-  { position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg' },
-  { position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al' },
-  { position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si' },
-  { position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P' },
-  { position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S' },
-  { position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl' },
-  { position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar' },
-  { position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K' },
-  { position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca' },
+const CN_DATA: CNRecord[] = [
+  {
+    '#': 1,
+    'CN No': 'CN10001',
+    Consignor: 'Alpha Traders',
+    Consignee: 'Beta Retail',
+    'From-Via-To': 'Nairobi - Thika - Murang’a',
+    'Pay.': 'Prepaid',
+    Amount: 4200,
+    'Rec.': 4000,
+    'Dis.': 100,
+    Due: 100,
+    Location: 'Nairobi',
+    'Inv. No/Dt': 'INV/2001 - 2025-05-01',
+    Status: 'Delivered',
+    Print: true,
+    Collect: false,
+  },
+  {
+    '#': 2,
+    'CN No': 'CN10002',
+    Consignor: 'Delta Corp',
+    Consignee: 'Gamma Warehouse',
+    'From-Via-To': 'Mombasa - Voi - Nairobi',
+    'Pay.': 'To Pay',
+    Amount: 8500,
+    'Rec.': 0,
+    'Dis.': 0,
+    Due: 8500,
+    Location: 'Mombasa',
+    'Inv. No/Dt': 'INV/2002 - 2025-05-02',
+    Status: 'Pending',
+    Print: false,
+    Collect: true,
+  },
+  {
+    '#': 3,
+    'CN No': 'CN10003',
+    Consignor: 'Epsilon Ltd',
+    Consignee: 'Zeta Distributors',
+    'From-Via-To': 'Kisumu - Kakamega - Eldoret',
+    'Pay.': 'Prepaid',
+    Amount: 3700,
+    'Rec.': 3700,
+    'Dis.': 50,
+    Due: 0,
+    Location: 'Kisumu',
+    'Inv. No/Dt': 'INV/2003 - 2025-05-03',
+    Status: 'Delivered',
+    Print: true,
+    Collect: false,
+  },
+  {
+    '#': 4,
+    'CN No': 'CN10004',
+    Consignor: 'Theta Ltd',
+    Consignee: 'Iota Retail',
+    'From-Via-To': 'Nakuru - Eldoret - Kitale',
+    'Pay.': 'To Pay',
+    Amount: 12000,
+    'Rec.': 8000,
+    'Dis.': 0,
+    Due: 4000,
+    Location: 'Nakuru',
+    'Inv. No/Dt': 'INV/2004 - 2025-05-04',
+    Status: 'In Transit',
+    Print: false,
+    Collect: true,
+  },
+  {
+    '#': 5,
+    'CN No': 'CN10005',
+    Consignor: 'Kappa Traders',
+    Consignee: 'Lambda Corp',
+    'From-Via-To': 'Thika - Nairobi - Machakos',
+    'Pay.': 'Prepaid',
+    Amount: 5600,
+    'Rec.': 5600,
+    'Dis.': 200,
+    Due: 0,
+    Location: 'Thika',
+    'Inv. No/Dt': 'INV/2005 - 2025-05-05',
+    Status: 'Delivered',
+    Print: true,
+    Collect: false,
+  },
+  {
+    '#': 6,
+    'CN No': 'CN10006',
+    Consignor: 'Mu Enterprises',
+    Consignee: 'Nu Distributors',
+    'From-Via-To': 'Eldoret - Kitale - Bungoma',
+    'Pay.': 'To Pay',
+    Amount: 7000,
+    'Rec.': 3500,
+    'Dis.': 0,
+    Due: 3500,
+    Location: 'Eldoret',
+    'Inv. No/Dt': 'INV/2006 - 2025-05-06',
+    Status: 'Pending',
+    Print: false,
+    Collect: true,
+  },
+  {
+    '#': 7,
+    'CN No': 'CN10007',
+    Consignor: 'Xi Logistics',
+    Consignee: 'Omicron Retail',
+    'From-Via-To': 'Mombasa - Nairobi - Kisumu',
+    'Pay.': 'Prepaid',
+    Amount: 9300,
+    'Rec.': 9300,
+    'Dis.': 300,
+    Due: 0,
+    Location: 'Mombasa',
+    'Inv. No/Dt': 'INV/2007 - 2025-05-07',
+    Status: 'Delivered',
+    Print: true,
+    Collect: false,
+  },
+  {
+    '#': 8,
+    'CN No': 'CN10008',
+    Consignor: 'Pi Ltd',
+    Consignee: 'Rho Warehouse',
+    'From-Via-To': 'Kakamega - Kisumu - Eldoret',
+    'Pay.': 'To Pay',
+    Amount: 4000,
+    'Rec.': 0,
+    'Dis.': 0,
+    Due: 4000,
+    Location: 'Kakamega',
+    'Inv. No/Dt': 'INV/2008 - 2025-05-08',
+    Status: 'Pending',
+    Print: false,
+    Collect: true,
+  },
+  {
+    '#': 9,
+    'CN No': 'CN10009',
+    Consignor: 'Sigma Traders',
+    Consignee: 'Tau Retail',
+    'From-Via-To': 'Nairobi - Machakos - Kitui',
+    'Pay.': 'Prepaid',
+    Amount: 6000,
+    'Rec.': 6000,
+    'Dis.': 0,
+    Due: 0,
+    Location: 'Nairobi',
+    'Inv. No/Dt': 'INV/2009 - 2025-05-09',
+    Status: 'Delivered',
+    Print: true,
+    Collect: false,
+  },
+  {
+    '#': 10,
+    'CN No': 'CN10010',
+    Consignor: 'Upsilon Corp',
+    Consignee: 'Phi Warehouse',
+    'From-Via-To': 'Nakuru - Eldoret - Kisumu',
+    'Pay.': 'To Pay',
+    Amount: 11000,
+    'Rec.': 6000,
+    'Dis.': 0,
+    Due: 5000,
+    Location: 'Nakuru',
+    'Inv. No/Dt': 'INV/2010 - 2025-05-10',
+    Status: 'In Transit',
+    Print: false,
+    Collect: true,
+  },
 ];
+

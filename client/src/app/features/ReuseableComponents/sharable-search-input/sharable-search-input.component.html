@@ -1,11 +1,12 @@
 <div class="z-10 w-fit">
-    <mat-form-field class="example-form-field">
-        <mat-label>Search by</mat-label>
-        <input matInput type="text" [(ngModel)]="value">
-        @if (value) {
-        <button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-            <mat-icon>close</mat-icon>
-        </button>
-        }
-        </mat-form-field>
+    <div class="relative w-full max-w-sm">
+        <input type="text" placeholder="Search..."
+            class="w-full pl-10 pr-3 py-2 rounded-sm border border-transparent focus:outline-none focus:border-blue-500 transition" />
+        <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-4.35-4.35M16.65 16.65A7.5 7.5 0 1010.5 3a7.5 7.5 0 006.15 13.65z" />
+            </svg>
+        </div>
+    </div>      
 </div>
