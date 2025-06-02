@@ -50,17 +50,18 @@ export class BookingRegisterComponent implements AfterViewInit {
     'CN No',
     'Consignor',
     'Consignee',
-    'From-Via-To',
+    // 'From-Via-To',
     'Pay.',
     'Amount',
-    'Rec.',
-    'Dis.',
+    // 'Rec.',
+    // 'Dis.',
     'Due',
     'Location',
     'Inv. No/Dt',
     'Status',
     'Print',
     'Collect',
+    'actions',
   ];
 
   dataSource = new MatTableDataSource(CN_DATA);

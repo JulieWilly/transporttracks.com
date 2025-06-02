@@ -1,0 +1,19 @@
+.example-container {
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+}
+
+tr.example-element-row {
+    cursor: pointer;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+    background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+    background: #efefef;
+}

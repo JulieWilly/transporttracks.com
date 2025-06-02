@@ -32,8 +32,7 @@ export class ManageLoadingSlipsComponent {
     'vehicleNo',
     'bag',
     'plant',
-    'edit',
-    'print',
+    'actions'
   ];
   value = '';
 
@@ -41,6 +40,7 @@ export class ManageLoadingSlipsComponent {
     alert('This button will add a new load slip');
   }
 }
+
 
 
 

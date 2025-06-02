@@ -10,8 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
-
-
+import { MatRippleModule } from '@angular/material/core';
 @Component({
   selector: 'app-sharable-table',
   imports: [
@@ -24,7 +23,8 @@ import { CommonModule } from '@angular/common';
     MatButtonModule,
     FormsModule,
     MatPaginatorModule,
-    CommonModule
+    CommonModule,
+    MatRippleModule,
   ],
   templateUrl: './sharable-table.component.html',
   styleUrl: './sharable-table.component.css',
@@ -32,8 +32,11 @@ import { CommonModule } from '@angular/common';
 })
 export class SharableTableComponent implements AfterViewInit {
   @Input() dataSource!: MatTableDataSource<any>;
-  @Input() displayedColumns: string[] =[];
-
+  @Input() displayedColumns: string[] = [];
+  @Input() showEdit = false;
+  @Input() showDelete = false;
+  @Input() showPrint = false;
+  @Input() showView = false;
 
   // displayedColumns: string[] = [
   //   'position',
@@ -49,6 +52,18 @@ export class SharableTableComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  edit(element: any) {
+    console.log('Edit:', element);
+  }
+
+  print(element: any) {
+    console.log('Print:', element);
+  }
+
+  delete(element: any) {
+    console.log('Delete:', element);
   }
 }
 

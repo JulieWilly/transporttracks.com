@@ -8,12 +8,13 @@ module.exports = {
         secondary: "#3B82F6",
       },
       fontSize: {
-        primaryFont: "0.75rem", 
-        secondaryFont:'2rem'
+        primaryFont: "0.75rem",
+        secondaryFont: "2rem",
       },
       colors: {
-        brandPrimary: "#ffffff", 
-        brandSecondary:"#000000"
+        brandPrimary: "#ffffff",
+        brandSecondary: "#000000",
+        brandTertiary: "#3B82F6",
       },
     },
   },
