@@ -38,15 +38,6 @@ export class SharableTableComponent implements AfterViewInit {
   @Input() showPrint = false;
   @Input() showView = false;
 
-  // displayedColumns: string[] = [
-  //   'position',
-  //   'name',
-  //   'weight',
-  //   'symbol',
-  //   'sympton',
-  //   'sweet',
-  // ];
-  // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   value = 'Clear me';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -64,6 +55,10 @@ export class SharableTableComponent implements AfterViewInit {
 
   delete(element: any) {
     console.log('Delete:', element);
+  }
+
+  viewDetails(element:any){
+    console.log('any', element);
   }
 }
 

@@ -11,16 +11,26 @@
                 </ng-container>
 
                 <ng-container *ngIf="column === 'actions'">
-                    <button *ngIf="showEdit" mat-icon-button color="primary" (click)="edit(element.id)">
+                    <button *ngIf="showEdit" mat-icon-button color="primary" (click)="edit(element.id)"
+                        class="flex flex-row gap-1 items-center">
                         <mat-icon>edit</mat-icon>
+                        <span class="text-sm">Edit</span>
                     </button>
-                    <button *ngIf="showPrint" mat-icon-button color="accent" (click)="print(element.id)">
+                    <button *ngIf="showPrint" mat-icon-button color="accent" (click)="print(element.id)"
+                        class="flex flex-row gap-1 items-center">
                         <mat-icon>print</mat-icon>
+                        <span class="text-sm">Print</span>
                     </button>
-                    <button *ngIf="showDelete" mat-icon-button color="warn" (click)="delete(element.id)">
-                        <mat-icon>delete</mat-icon> </button>
-                        <button *ngIf="showView" mat-icon-button color="warn" (click)="delete(element.id)">
-                            <mat-icon>visibility</mat-icon> </button>
+                    <button *ngIf="showDelete" mat-icon-button color="warn" (click)="delete(element.id)"
+                        class="flex flex-row gap-1 items-center">
+                        <mat-icon>delete</mat-icon> \
+                        <span class="text-sm">Print</span>
+                    </button>
+                    <button *ngIf="showView" mat-icon-button color="warn" (click)="viewDetails(element.id)"
+                        class="flex flex-row gap-1 items-center">
+                        <mat-icon>visibility</mat-icon>
+                        <span class="text-sm">View</span>
+                    </button>
                 </ng-container>
             </td>
 
