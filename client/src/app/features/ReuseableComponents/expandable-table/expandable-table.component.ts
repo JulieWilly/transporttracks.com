@@ -4,6 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { AfterViewInit, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-expandable-table',
@@ -13,6 +15,7 @@ import { AfterViewInit, ViewChild } from '@angular/core';
     MatTableModule,
     MatPaginator,
     MatPaginatorModule,
+    CommonModule,
   ],
   templateUrl: './expandable-table.component.html',
   styleUrl: './expandable-table.component.css',
@@ -45,9 +48,9 @@ export class ExpandableTableComponent implements AfterViewInit {
     this.expandedElement = this.isExpanded(element) ? null : element;
   }
 
-  onButtonClick(row:MatTableDataSource<any>) {
-
+  onButtonClick(row: MatTableDataSource<any>) {
     // console.log('Row', row);
+    alert('Button has been clicked.')
   }
 }
 
