@@ -1,4 +1,4 @@
-<div class="pr-10 pl-10">
+<div class="pr-4 pl-4">
     <div class="flex flex-row items-center justify-between p-2">
         <app-quick-navigation currentPage="currentPage"></app-quick-navigation>
         <div class="flex flex-row gap-4 items-center">
@@ -56,6 +56,6 @@
         </div>
     </div>
     <section class="example-container mat-elevation-z8 mt-2 rounded-md overflow-hidden" tabindex="0">
-<app-sharable-table [dataSource]="dataSource" [showEdit]="false" [showDelete]="false" [showPrint]="true" [showView]="true" [displayedColumns]="displayedColumns" ></app-sharable-table>
+        <app-expandable-table [dataSource]="dataSource" [displayedColumns]="displayedColumns" [columnHeaders]="columnHeaders"></app-expandable-table>
     </section>
 </div>

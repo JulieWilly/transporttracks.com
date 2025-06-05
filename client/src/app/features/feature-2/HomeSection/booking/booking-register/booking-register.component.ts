@@ -7,20 +7,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { AfterViewInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { SharableSearchInputComponent } from '../../../../ReuseableComponents/sharable-search-input/sharable-search-input.component';
 import { SharableTitleComponent } from '../../../../ReuseableComponents/sharable-title/sharable-title.component';
-
-// import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-// import { AfterViewInit, ViewChild } from '@angular/core';
-// import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-// import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-// import { dataset } from '../../../../../data/bkRegister';
-// import { ConsignmentRecord } from '../../../../../Inrterfaces/bkRegisterInt';
-
 import { QuickNavigationComponent } from '../../../../ReuseableComponents/quick-navigation/quick-navigation.component';
 import { SharableTableComponent } from '../../../../ReuseableComponents/sharable-table/sharable-table.component';
+import { ExpandableTableComponent } from '../../../../ReuseableComponents/expandable-table/expandable-table.component';
+import { CommonModule } from '@angular/common';
+
 @Component({
   standalone: true,
   selector: 'app-booking-register',
@@ -37,231 +31,216 @@ import { SharableTableComponent } from '../../../../ReuseableComponents/sharable
     SharableSearchInputComponent,
     SharableTitleComponent,
     QuickNavigationComponent,
-    SharableTableComponent,
+    ExpandableTableComponent,
+    CommonModule,
   ],
 
   templateUrl: './booking-register.component.html',
   styleUrl: './booking-register.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BookingRegisterComponent implements AfterViewInit {
+export class BookingRegisterComponent {
   displayedColumns: string[] = [
-    '#',
-    'CN No',
-    'Consignor',
-    'Consignee',
-    // 'From-Via-To',
-    'Pay.',
-    'Amount',
-    // 'Rec.',
-    // 'Dis.',
-    'Due',
-    'Location',
-    'Inv. No/Dt',
-    'Status',
-    'Print',
-    'Collect',
+    'number',
+    'cnNo',
+    'consignor',
+    'consignee',
+    // 'fromViaTo',
+    'payMode',
+    'amount',
+    'received',
+    'discount',
+    'due',
+    'location',
+    'invoice',
+    'status',
     'actions',
   ];
 
+  columnHeaders: Record<string, string> = {
+    number: '#',
+    cnNo: 'CN No.',
+    consignor: 'Consignor',
+    consignee: 'Consignee',
+    payMode: 'Pay Mode',
+    amount: 'Amount',
+    received: 'Received',
+    discount: 'Discount',
+    due: 'Due',
+    location: 'Location',
+    invoice: 'Invoice',
+    status: 'Status',
+  };
+
   dataSource = new MatTableDataSource(CN_DATA);
   value = 'Clear me';
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
 }
 
 export interface CNRecord {
-  '#': number;
-  'CN No': string;
-  Consignor: string;
-  Consignee: string;
-  'From-Via-To': string;
-  'Pay.': string;
-  Amount: number;
-  'Rec.': number;
-  'Dis.': number;
-  Due: number;
-  Location: string;
-  'Inv. No/Dt': string;
-  Status: string;
-  Print: boolean;
-  Collect: boolean;
+  number: number;
+  cnNo: string;
+  consignor: string;
+  consignee: string;
+  fromViaTo: string;
+  payMode: string;
+  amount: number;
+  received: number;
+  discount: number;
+  due: number;
+  location: string;
+  invoice: string;
+  status: string;
 }
 
 const CN_DATA: CNRecord[] = [
   {
-    '#': 1,
-    'CN No': 'CN10001',
-    Consignor: 'Alpha Traders',
-    Consignee: 'Beta Retail',
-    'From-Via-To': 'Nairobi - Thika - Murang’a',
-    'Pay.': 'Prepaid',
-    Amount: 4200,
-    'Rec.': 4000,
-    'Dis.': 100,
-    Due: 100,
-    Location: 'Nairobi',
-    'Inv. No/Dt': 'INV/2001 - 2025-05-01',
-    Status: 'Delivered',
-    Print: true,
-    Collect: false,
+    number: 1,
+    cnNo: 'CN10001',
+    consignor: 'Alpha Traders',
+    consignee: 'Beta Retail',
+    fromViaTo: 'Nairobi - Thika - Murang’a',
+    payMode: 'Prepaid',
+    amount: 4200,
+    received: 4000,
+    discount: 100,
+    due: 100,
+    location: 'Nairobi',
+    invoice: 'INV/2001 - 2025-05-01',
+    status: 'Delivered',
   },
   {
-    '#': 2,
-    'CN No': 'CN10002',
-    Consignor: 'Delta Corp',
-    Consignee: 'Gamma Warehouse',
-    'From-Via-To': 'Mombasa - Voi - Nairobi',
-    'Pay.': 'To Pay',
-    Amount: 8500,
-    'Rec.': 0,
-    'Dis.': 0,
-    Due: 8500,
-    Location: 'Mombasa',
-    'Inv. No/Dt': 'INV/2002 - 2025-05-02',
-    Status: 'Pending',
-    Print: false,
-    Collect: true,
+    number: 2,
+    cnNo: 'CN10002',
+    consignor: 'Delta Corp',
+    consignee: 'Gamma Warehouse',
+    fromViaTo: 'Mombasa - Voi - Nairobi',
+    payMode: 'To Pay',
+    amount: 8500,
+    received: 0,
+    discount: 0,
+    due: 8500,
+    location: 'Mombasa',
+    invoice: 'INV/2002 - 2025-05-02',
+    status: 'Pending',
   },
   {
-    '#': 3,
-    'CN No': 'CN10003',
-    Consignor: 'Epsilon Ltd',
-    Consignee: 'Zeta Distributors',
-    'From-Via-To': 'Kisumu - Kakamega - Eldoret',
-    'Pay.': 'Prepaid',
-    Amount: 3700,
-    'Rec.': 3700,
-    'Dis.': 50,
-    Due: 0,
-    Location: 'Kisumu',
-    'Inv. No/Dt': 'INV/2003 - 2025-05-03',
-    Status: 'Delivered',
-    Print: true,
-    Collect: false,
+    number: 3,
+    cnNo: 'CN10003',
+    consignor: 'Epsilon Ltd',
+    consignee: 'Zeta Distributors',
+    fromViaTo: 'Kisumu - Kakamega - Eldoret',
+    payMode: 'Prepaid',
+    amount: 3700,
+    received: 3700,
+    discount: 50,
+    due: 0,
+    location: 'Kisumu',
+    invoice: 'INV/2003 - 2025-05-03',
+    status: 'Delivered',
   },
   {
-    '#': 4,
-    'CN No': 'CN10004',
-    Consignor: 'Theta Ltd',
-    Consignee: 'Iota Retail',
-    'From-Via-To': 'Nakuru - Eldoret - Kitale',
-    'Pay.': 'To Pay',
-    Amount: 12000,
-    'Rec.': 8000,
-    'Dis.': 0,
-    Due: 4000,
-    Location: 'Nakuru',
-    'Inv. No/Dt': 'INV/2004 - 2025-05-04',
-    Status: 'In Transit',
-    Print: false,
-    Collect: true,
+    number: 4,
+    cnNo: 'CN10004',
+    consignor: 'Theta Ltd',
+    consignee: 'Iota Retail',
+    fromViaTo: 'Nakuru - Eldoret - Kitale',
+    payMode: 'To Pay',
+    amount: 12000,
+    received: 8000,
+    discount: 0,
+    due: 4000,
+    location: 'Nakuru',
+    invoice: 'INV/2004 - 2025-05-04',
+    status: 'In Transit',
   },
   {
-    '#': 5,
-    'CN No': 'CN10005',
-    Consignor: 'Kappa Traders',
-    Consignee: 'Lambda Corp',
-    'From-Via-To': 'Thika - Nairobi - Machakos',
-    'Pay.': 'Prepaid',
-    Amount: 5600,
-    'Rec.': 5600,
-    'Dis.': 200,
-    Due: 0,
-    Location: 'Thika',
-    'Inv. No/Dt': 'INV/2005 - 2025-05-05',
-    Status: 'Delivered',
-    Print: true,
-    Collect: false,
+    number: 5,
+    cnNo: 'CN10005',
+    consignor: 'Kappa Traders',
+    consignee: 'Lambda Corp',
+    fromViaTo: 'Thika - Nairobi - Machakos',
+    payMode: 'Prepaid',
+    amount: 5600,
+    received: 5600,
+    discount: 200,
+    due: 0,
+    location: 'Thika',
+    invoice: 'INV/2005 - 2025-05-05',
+    status: 'Delivered',
   },
   {
-    '#': 6,
-    'CN No': 'CN10006',
-    Consignor: 'Mu Enterprises',
-    Consignee: 'Nu Distributors',
-    'From-Via-To': 'Eldoret - Kitale - Bungoma',
-    'Pay.': 'To Pay',
-    Amount: 7000,
-    'Rec.': 3500,
-    'Dis.': 0,
-    Due: 3500,
-    Location: 'Eldoret',
-    'Inv. No/Dt': 'INV/2006 - 2025-05-06',
-    Status: 'Pending',
-    Print: false,
-    Collect: true,
+    number: 6,
+    cnNo: 'CN10006',
+    consignor: 'Mu Enterprises',
+    consignee: 'Nu Distributors',
+    fromViaTo: 'Eldoret - Kitale - Bungoma',
+    payMode: 'To Pay',
+    amount: 7000,
+    received: 3500,
+    discount: 0,
+    due: 3500,
+    location: 'Eldoret',
+    invoice: 'INV/2006 - 2025-05-06',
+    status: 'Pending',
   },
   {
-    '#': 7,
-    'CN No': 'CN10007',
-    Consignor: 'Xi Logistics',
-    Consignee: 'Omicron Retail',
-    'From-Via-To': 'Mombasa - Nairobi - Kisumu',
-    'Pay.': 'Prepaid',
-    Amount: 9300,
-    'Rec.': 9300,
-    'Dis.': 300,
-    Due: 0,
-    Location: 'Mombasa',
-    'Inv. No/Dt': 'INV/2007 - 2025-05-07',
-    Status: 'Delivered',
-    Print: true,
-    Collect: false,
+    number: 7,
+    cnNo: 'CN10007',
+    consignor: 'Xi Logistics',
+    consignee: 'Omicron Retail',
+    fromViaTo: 'Mombasa - Nairobi - Kisumu',
+    payMode: 'Prepaid',
+    amount: 9300,
+    received: 9300,
+    discount: 300,
+    due: 0,
+    location: 'Mombasa',
+    invoice: 'INV/2007 - 2025-05-07',
+    status: 'Delivered',
   },
   {
-    '#': 8,
-    'CN No': 'CN10008',
-    Consignor: 'Pi Ltd',
-    Consignee: 'Rho Warehouse',
-    'From-Via-To': 'Kakamega - Kisumu - Eldoret',
-    'Pay.': 'To Pay',
-    Amount: 4000,
-    'Rec.': 0,
-    'Dis.': 0,
-    Due: 4000,
-    Location: 'Kakamega',
-    'Inv. No/Dt': 'INV/2008 - 2025-05-08',
-    Status: 'Pending',
-    Print: false,
-    Collect: true,
+    number: 8,
+    cnNo: 'CN10008',
+    consignor: 'Pi Ltd',
+    consignee: 'Rho Warehouse',
+    fromViaTo: 'Kakamega - Kisumu - Eldoret',
+    payMode: 'To Pay',
+    amount: 4000,
+    received: 0,
+    discount: 0,
+    due: 4000,
+    location: 'Kakamega',
+    invoice: 'INV/2008 - 2025-05-08',
+    status: 'Pending',
   },
   {
-    '#': 9,
-    'CN No': 'CN10009',
-    Consignor: 'Sigma Traders',
-    Consignee: 'Tau Retail',
-    'From-Via-To': 'Nairobi - Machakos - Kitui',
-    'Pay.': 'Prepaid',
-    Amount: 6000,
-    'Rec.': 6000,
-    'Dis.': 0,
-    Due: 0,
-    Location: 'Nairobi',
-    'Inv. No/Dt': 'INV/2009 - 2025-05-09',
-    Status: 'Delivered',
-    Print: true,
-    Collect: false,
+    number: 9,
+    cnNo: 'CN10009',
+    consignor: 'Sigma Traders',
+    consignee: 'Tau Retail',
+    fromViaTo: 'Nairobi - Machakos - Kitui',
+    payMode: 'Prepaid',
+    amount: 6000,
+    received: 6000,
+    discount: 0,
+    due: 0,
+    location: 'Nairobi',
+    invoice: 'INV/2009 - 2025-05-09',
+    status: 'Delivered',
   },
   {
-    '#': 10,
-    'CN No': 'CN10010',
-    Consignor: 'Upsilon Corp',
-    Consignee: 'Phi Warehouse',
-    'From-Via-To': 'Nakuru - Eldoret - Kisumu',
-    'Pay.': 'To Pay',
-    Amount: 11000,
-    'Rec.': 6000,
-    'Dis.': 0,
-    Due: 5000,
-    Location: 'Nakuru',
-    'Inv. No/Dt': 'INV/2010 - 2025-05-10',
-    Status: 'In Transit',
-    Print: false,
-    Collect: true,
+    number: 10,
+    cnNo: 'CN10010',
+    consignor: 'Upsilon Corp',
+    consignee: 'Phi Warehouse',
+    fromViaTo: 'Nakuru - Eldoret - Kisumu',
+    payMode: 'To Pay',
+    amount: 11000,
+    received: 6000,
+    discount: 0,
+    due: 5000,
+    location: 'Nakuru',
+    invoice: 'INV/2010 - 2025-05-10',
+    status: 'In Transit',
   },
 ];
-
