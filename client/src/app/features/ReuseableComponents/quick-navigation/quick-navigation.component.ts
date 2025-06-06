@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
   styleUrl: './quick-navigation.component.css',
 })
 export class QuickNavigationComponent {
-  @Input() currentPage!: string;
+  @Input() currentPage: string='';
 
   constructor(private location: Location) {}
 

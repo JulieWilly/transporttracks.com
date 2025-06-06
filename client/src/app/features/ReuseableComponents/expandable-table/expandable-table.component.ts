@@ -6,7 +6,6 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-
 @Component({
   selector: 'app-expandable-table',
   imports: [
@@ -23,7 +22,8 @@ import { CommonModule } from '@angular/common';
 export class ExpandableTableComponent implements AfterViewInit {
   @Input() dataSource!: MatTableDataSource<any>;
   @Input() displayedColumns!: string[];
-  @Input() columnHeaders!: Record<string, string>;
+  // @Input() columnHeaders!: Record<string, string>;
+  @Input() columnHeaders!: any;
 
   // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   // columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
@@ -50,7 +50,7 @@ export class ExpandableTableComponent implements AfterViewInit {
 
   onButtonClick(row: MatTableDataSource<any>) {
     // console.log('Row', row);
-    alert('Button has been clicked.')
+    alert('Button has been clicked.');
   }
 }
 

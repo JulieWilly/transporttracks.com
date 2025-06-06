@@ -1,5 +1,63 @@
-<div>
-    <div>
-        <h1 class="capitalize text-4xl">Booking list</h1>
+<div class="pr-4 pl-4">
+    <div class="flex flex-row items-center justify-between p-2">
+        <app-quick-navigation currentPage="currentPage"></app-quick-navigation>
+        <div class="flex flex-row gap-4 items-center">
+            <span class="capitalize tracking-wide text-brandPrimary bg-secondary  text-primaryFont cursor-pointer p-1">
+                Track Your Bookings
+            </span>
+            <span class="flex flex-row gap-2 items-center bg-primary p-1 rounded-sm cursor-pointer text-primaryFont">
+                <span class="text-white">FY:</span>
+                <span class="text-white">2025 - 2026</span>
+            </span>
+        </div>
     </div>
+    <div class="mt-2">
+        <div class="flex flex-row items-center justify-between">
+            <app-sharable-title [title]="'Booking Register'"></app-sharable-title>
+            <span class="pt-1 pb-1 pl-2 pr-2 bg-blue-500 text-white cursor-pointer"> <i class="fa-solid fa-book"></i>
+                Statements</span>
+        </div>
+        <div class="flex flex-row gap-2 items-center justify-start mt-2 mb-2">
+            <div class="relative max-w-sm">
+                <select
+                    class="w-full px-3 py-2 rounded-sm border border-transparent focus:outline-none focus:border-blue-500 text-gray-700 bg-white appearance-none transition">
+                    <option value="">-- All --</option>
+                    <option value="gst">GST INVOICE</option>
+                    <option value="challan">BOOKING CHALLAN</option>
+                </select>
+                <div class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 9l6 6 6-6" />
+                    </svg>
+                </div>
+            </div>
+            <div class="relative max-w-sm">
+                <select
+                    class="w-full px-3 py-2 rounded-sm border border-transparent focus:outline-none focus:border-blue-500 text-gray-700 bg-white appearance-none transition">
+                    <option value="">-- All --</option>
+                    <option value="overall-cn">OVERALL CN No</option>
+                    <option value="branch-cn">Branch Wise CN No</option>
+                    <option value="manual-cn">Manual CN No</option>
+                    <option value="invoice">Invoice / Bill No</option>
+                    <option value="consignor">Consignor Name/Mobile</option>
+                    <option value="consignee">Consignee Name/Mobile</option>
+                    <option value="payment">Payment Liability/ Bill No</option>
+                    <option value="shipment">Shipment/DI No</option>
+                </select>
+                <div class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 9l6 6 6-6" />
+                    </svg>
+                </div>
+            </div>
+            <app-sharable-search-input>
+            </app-sharable-search-input>
+        </div>
+    </div>
+    <section class="example-container mat-elevation-z8 mt-2 rounded-md overflow-hidden" tabindex="0">
+        <app-expandable-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"
+            [columnHeaders]="columnHeaders"></app-expandable-table>
+    </section>
 </div>

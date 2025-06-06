@@ -40,8 +40,8 @@
                                     class="text-blue-500 cursor-pointer" href="/">{{ element.consignor}}</a></h1>
                             <h1><span class="font-bold tracking-wide">Consignee No:</span><a
                                     class="text-blue-500 cursor-pointer" href="/">{{ element.consignee}}</a></h1>
-                            <h1><span class="font-bold tracking-wide">Received:</span>{{ element.received}}</h1>
-                            <h1><span class="font-bold tracking-wide">Discount:</span>{{ element.discount}}</h1>
+                            <h1 [ngClass]="!element.received ? 'hidden':'block'"><span class="font-bold tracking-wide">Received:</span>{{ element.received}}</h1>
+                            <h1 [ngClass]="!element.discount ? 'hidden':'block'"><span class="font-bold tracking-wide">Discount:</span>{{ element.discount}}</h1>
                             <h1><span class="font-bold tracking-wide">Route:</span>{{ element.fromViaTo}}</h1>
                         </div>
                     </div>

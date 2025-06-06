@@ -74,6 +74,7 @@ export class BookingRegisterComponent {
 
   dataSource = new MatTableDataSource(CN_DATA);
   value = 'Clear me';
+  currentPage:string = 'Booking Register';
 }
 
 export interface CNRecord {
