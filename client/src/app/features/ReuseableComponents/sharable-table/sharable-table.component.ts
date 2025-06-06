@@ -11,6 +11,7 @@ import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
 import { MatRippleModule } from '@angular/material/core';
+
 @Component({
   selector: 'app-sharable-table',
   imports: [
@@ -37,6 +38,7 @@ export class SharableTableComponent implements AfterViewInit {
   @Input() showDelete = false;
   @Input() showPrint = false;
   @Input() showView = false;
+  @Input() columnHeaders!: any;
 
   value = 'Clear me';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -45,20 +47,20 @@ export class SharableTableComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  edit(element: any) {
-    console.log('Edit:', element);
+  edit() {
+    // console.log('Edit:', element);
   }
 
-  print(element: any) {
-    console.log('Print:', element);
+  print() {
+    // console.log('Print:', element);
   }
 
-  delete(element: any) {
-    console.log('Delete:', element);
+  delete() {
+    // console.log('Delete:', element);
   }
 
-  viewDetails(element:any){
-    console.log('any', element);
+  openDetails() {
+    // console.log('any', element);
   }
 }
 

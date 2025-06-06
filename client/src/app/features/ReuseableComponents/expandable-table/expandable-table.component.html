@@ -3,8 +3,7 @@
         @for (column of displayedColumns; track column) {
         <ng-container matColumnDef="{{column}}">
             <th mat-header-cell *matHeaderCellDef
-                style="color: #393E46; font-weight: bold; text-transform:uppercase;"
-                class="bg-red-500">
+                style="color: #393E46; font-weight: bold; text-transform:uppercase;">
                 {{columnHeaders[column] || column}}</th>
             <td mat-cell *matCellDef="let element" class=""
                 [ngClass]="column === 'status' ? 'text-red-500 font-semibold ' : ''">

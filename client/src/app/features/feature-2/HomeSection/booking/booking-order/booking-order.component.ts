@@ -7,18 +7,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-
-
-
-interface Order {
-  id: number;
-  orderDate: string;
-  consignor: string;
-  total: number;
-  pending: number;
-  generated: boolean;
-}
-
+import { QuickNavigationComponent } from '../../../../ReuseableComponents/quick-navigation/quick-navigation.component';
+import { SharableTitleComponent } from '../../../../ReuseableComponents/sharable-title/sharable-title.component';
+import { SharableSearchInputComponent } from '../../../../ReuseableComponents/sharable-search-input/sharable-search-input.component';
+import { SharableTableComponent } from '../../../../ReuseableComponents/sharable-table/sharable-table.component';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-booking-order',
   imports: [
@@ -30,125 +23,128 @@ interface Order {
     MatButtonToggleModule,
     FormsModule,
     MatIconModule,
+    QuickNavigationComponent,
+    SharableTitleComponent,
+    SharableSearchInputComponent,
+    SharableTableComponent,
+    CommonModule,
   ],
   templateUrl: './booking-order.component.html',
   styleUrl: './booking-order.component.css',
 })
-export class BookingOrderComponent implements AfterViewInit {
+export class BookingOrderComponent {
   displayedColumns: string[] = [
-    'id',
+    'slNo',
     'orderDate',
     'consignor',
     'total',
     'pending',
     'generated',
-    'actions'
+    'view',
+    'actions',
   ];
 
-  ORDERS_DATA: Order[] = [
-    {
-      id: 1,
-      orderDate: '2025-05-01',
-      consignor: 'Alpha Traders',
-      total: 5000,
-      pending: 1500,
-      generated: true,
-    },
-    {
-      id: 2,
-      orderDate: '2025-05-02',
-      consignor: 'Beta Logistics',
-      total: 7200,
-      pending: 0,
-      generated: true,
-    },
-    {
-      id: 3,
-      orderDate: '2025-05-03',
-      consignor: 'Gamma Exports',
-      total: 3800,
-      pending: 1000,
-      generated: false,
-    },
-    {
-      id: 4,
-      orderDate: '2025-05-04',
-      consignor: 'Delta Freight',
-      total: 6400,
-      pending: 200,
-      generated: true,
-    },
-    {
-      id: 5,
-      orderDate: '2025-05-05',
-      consignor: 'Echo Movers',
-      total: 2500,
-      pending: 2500,
-      generated: false,
-    },
-    {
-      id: 6,
-      orderDate: '2025-05-06',
-      consignor: 'Foxtrot Traders',
-      total: 10000,
-      pending: 500,
-      generated: true,
-    },
-    {
-      id: 7,
-      orderDate: '2025-05-07',
-      consignor: 'Golf Distributors',
-      total: 4700,
-      pending: 4700,
-      generated: false,
-    },
-    {
-      id: 8,
-      orderDate: '2025-05-08',
-      consignor: 'Hotel Cargo',
-      total: 3200,
-      pending: 0,
-      generated: true,
-    },
-    {
-      id: 9,
-      orderDate: '2025-05-09',
-      consignor: 'India Logistics',
-      total: 8100,
-      pending: 300,
-      generated: true,
-    },
-    {
-      id: 10,
-      orderDate: '2025-05-10',
-      consignor: 'Juliet Shipping',
-      total: 2900,
-      pending: 1000,
-      generated: false,
-    },
-  ];
-
-  dataSource: MatTableDataSource<Order>;
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  constructor() {
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(this.ORDERS_DATA);
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
+  dataSource = new MatTableDataSource(BOOKING_ORDERS);
+  columnHeaders: Record<string, string> = {
+    slNo: 'SL No',
+    orderDate: 'Order Date',
+    consignor: 'Consignor',
+    total: 'Total',
+    pending: 'Pending',
+    generated: 'Generated',
+    view: 'View',
+    actions: 'Actions',
+  };
 }
+
+interface Order {
+  slNo: number;
+  orderDate: string;
+  consignor: string;
+  total: number;
+  pending: number;
+  generated: boolean;
+}
+
+const BOOKING_ORDERS: Order[] = [
+  {
+    slNo: 1,
+    orderDate: '2024-06-01',
+    consignor: 'ABC Logistics',
+    total: 5000,
+    pending: 1000,
+    generated: true,
+  },
+  {
+    slNo: 2,
+    orderDate: '2024-06-02',
+    consignor: 'XYZ Transport',
+    total: 6000,
+    pending: 500,
+    generated: false,
+  },
+  {
+    slNo: 3,
+    orderDate: '2024-06-03',
+    consignor: 'QuickMove',
+    total: 7000,
+    pending: 2000,
+    generated: true,
+  },
+  {
+    slNo: 4,
+    orderDate: '2024-06-04',
+    consignor: 'FastTrack',
+    total: 8000,
+    pending: 1000,
+    generated: true,
+  },
+  {
+    slNo: 5,
+    orderDate: '2024-06-05',
+    consignor: 'BlueDart',
+    total: 9000,
+    pending: 3000,
+    generated: false,
+  },
+  {
+    slNo: 6,
+    orderDate: '2024-06-06',
+    consignor: 'SafeShip',
+    total: 4000,
+    pending: 0,
+    generated: true,
+  },
+  {
+    slNo: 7,
+    orderDate: '2024-06-07',
+    consignor: 'GreenTransport',
+    total: 7500,
+    pending: 1500,
+    generated: true,
+  },
+  {
+    slNo: 8,
+    orderDate: '2024-06-08',
+    consignor: 'CargoJet',
+    total: 6700,
+    pending: 1200,
+    generated: false,
+  },
+  {
+    slNo: 9,
+    orderDate: '2024-06-09',
+    consignor: 'RedX',
+    total: 7100,
+    pending: 400,
+    generated: true,
+  },
+  {
+    slNo: 10,
+    orderDate: '2024-06-10',
+    consignor: 'OmniTrans',
+    total: 6200,
+    pending: 700,
+    generated: false,
+  },
+];

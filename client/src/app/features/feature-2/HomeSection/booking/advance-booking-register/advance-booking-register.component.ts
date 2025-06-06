@@ -7,8 +7,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-
-
+import { QuickNavigationComponent } from '../../../../ReuseableComponents/quick-navigation/quick-navigation.component';
+import { SharableTableComponent } from '../../../../ReuseableComponents/sharable-table/sharable-table.component';
+import { SharableTitleComponent } from '../../../../ReuseableComponents/sharable-title/sharable-title.component';
+import { SharableSearchInputComponent } from '../../../../ReuseableComponents/sharable-search-input/sharable-search-input.component';
 interface Consignment {
   id: number;
   issueDate: string;
@@ -31,6 +33,10 @@ interface Consignment {
     MatButtonToggleModule,
     FormsModule,
     MatIconModule,
+    QuickNavigationComponent,
+    SharableTableComponent,
+    SharableTitleComponent,
+    SharableSearchInputComponent,
   ],
   templateUrl: './advance-booking-register.component.html',
   styleUrl: './advance-booking-register.component.css',
@@ -48,6 +54,19 @@ export class AdvanceBookingRegisterComponent implements AfterViewInit {
     'transport',
     'actions',
   ];
+
+  columnHeaders: Record<string, string> = {
+    id: '#',
+    issueDate: 'Issue Date',
+    cnNo: 'CN No.',
+    consignor: 'Consignor',
+    consignee: 'Consignee',
+    biltyType: 'Bilty Type',
+    status: 'Status',
+    transport: 'Transport',
+    actions: 'Actions',
+  };
+
   consignmentData: Consignment[] = [
     {
       id: 1,
