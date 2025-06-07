@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,4 +19,6 @@ import { MatInputModule } from '@angular/material/input';
 })
 export class SharableSearchInputComponent {
   value = '';
+
+  @Input() placeholderText!: string;
 }

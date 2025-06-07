@@ -39,6 +39,7 @@ export class SharableTableComponent implements AfterViewInit {
   @Input() showPrint = false;
   @Input() showView = false;
   @Input() columnHeaders!: any;
+  @Input() showLinked = false;
 
   value = 'Clear me';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -61,6 +62,9 @@ export class SharableTableComponent implements AfterViewInit {
 
   openDetails() {
     // console.log('any', element);
+  }
+  openLinkedDetails(){
+    
   }
 }
 

@@ -25,9 +25,10 @@ export class ManifestRegisterComponent {
     'to',
     'vehicleNo',
     'status',
-    'action',
+    'actions',
   ];
 
+  placeholderText:string = 'Manifest No / Vehicle No';
   columnHeaders: Record<string, string> = {
     slNo: 'SL No',
     mfNo: 'MF/No',
@@ -36,7 +37,7 @@ export class ManifestRegisterComponent {
     to: 'To',
     vehicleNo: 'Vehicle No',
     status: 'Status',
-    action: 'Action',
+    actions: 'Actions',
   };
 
   dataSource = new MatTableDataSource(MANIFEST_DATA);
@@ -51,7 +52,6 @@ export interface ManifestRecord {
   vehicleNo: string;
   status: string;
 }
-
 
 export const MANIFEST_DATA: ManifestRecord[] = [
   {
@@ -145,4 +145,3 @@ export const MANIFEST_DATA: ManifestRecord[] = [
     status: 'Delivered',
   },
 ];
-
