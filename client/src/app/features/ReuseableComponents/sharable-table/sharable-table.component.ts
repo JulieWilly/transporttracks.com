@@ -39,6 +39,7 @@ export class SharableTableComponent implements AfterViewInit {
   @Input() showView = false;
   @Input() columnHeaders!: any;
   @Input() showLinked = false;
+  @Input() toDeliver= false;
 
   value = 'Clear me';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -91,4 +92,5 @@ export class SharableTableComponent implements AfterViewInit {
   addTrip() {}
 
   openService() {}
+  deliver(){}
 }
