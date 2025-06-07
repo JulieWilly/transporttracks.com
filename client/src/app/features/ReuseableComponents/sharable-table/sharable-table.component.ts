@@ -63,9 +63,21 @@ export class SharableTableComponent implements AfterViewInit {
   openDetails() {
     // console.log('any', element);
   }
-  openLinkedDetails(){
-    
+  openLinkedDetails() {}
+
+  inspect() {}
+
+  openDocuments() {}
+
+  isActive = false;
+
+  toggleActive() {
+    this.isActive = !this.isActive;
   }
+
+  addTrip() {}
+
+  openService() {}
 }
 
 

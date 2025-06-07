@@ -12,39 +12,17 @@
                     {{element[column]}}
                 </ng-container>
                 <ng-container *ngIf="column === 'actions'">
-                    <!-- <div class="flex flex-row gap-2 items-center">
-                        <button *ngIf="showEdit" (click)="edit()" class="flex flex-row gap-1 items-center">
-                            <span class="p-1 bg-orange-500 text-white"><i class="fa-solid fa-pen-to-square"></i></span>
-                        </button>
-                        <button *ngIf="showPrint" (click)="print()" class="flex flex-row gap-1 items-center">
-                            <span class="p-1 bg-green-500 text-white">
-                                <i class="fa-solid fa-print"></i>
-                            </span>
-                        </button>
-                        <button *ngIf="showDelete" (click)="delete()" class="flex flex-row gap-1 items-center">
-                            <span class="p-1 bg-red-500 text-white">
-                                <i class="fa-solid fa-trash"></i>
-                            </span>
-                        </button>
-                        <button *ngIf="showView" (click)="openDetails()" class="flex flex-row gap-1 items-center">
-                            <span class="p-1 bg-blue-500 text-white">
-                                <i class="fa-solid fa-eye "></i>
-                            </span>
-                        </button>
-                    </div> -->
-
-
                     <div class="flex flex-row gap-2 items-center">
                         <div class="relative group">
                             <button *ngIf="showEdit" (click)="edit()" class="flex flex-row gap-1 items-center">
-                                <span class="p-1 bg-orange-500 text-white"><i class="fa-solid fa-pen-to-square"></i></span>
+                                <span class="p-1 bg-orange-500 text-white"><i
+                                        class="fa-solid fa-pen-to-square"></i></span>
                             </button>
                             <div
                                 class="absolute top-1/2 left-full ml-2 -translate-y-1/2 px-2 py-1 text-xs text-white bg-black rounded shadow-md opacity-0 group-hover:opacity-100 transition pointer-events-none z-20">
                                 Edit
                             </div>
                         </div>
-                    
                         <div class="relative group">
                             <button *ngIf="showPrint" (click)="print()" class="flex flex-row gap-1 items-center">
                                 <span class="p-1 bg-green-500 text-white">
@@ -56,9 +34,9 @@
                                 Print
                             </div>
                         </div>
-
                         <div class="relative group">
-                            <button *ngIf="showLinked" (click)="openLinkedDetails()" class="flex flex-row gap-1 items-center">
+                            <button *ngIf="showLinked" (click)="openLinkedDetails()"
+                                class="flex flex-row gap-1 items-center">
                                 <span class="p-1 bg-blue-500 text-white">
                                     <i class="fa-solid fa-link"></i>
                                 </span>
@@ -68,7 +46,7 @@
                                 Linked Details
                             </div>
                         </div>
-                    
+
                         <div class="relative group">
                             <button *ngIf="showDelete" (click)="delete()" class="flex flex-row gap-1 items-center">
                                 <span class="p-1 bg-red-500 text-white">
@@ -80,7 +58,7 @@
                                 Delete
                             </div>
                         </div>
-                    
+
                         <div class="relative group">
                             <button *ngIf="showView" (click)="openDetails()" class="flex flex-row gap-1 items-center">
                                 <span class="p-1 bg-blue-500 text-white">
@@ -93,7 +71,59 @@
                             </div>
                         </div>
                     </div>
-                    
+                </ng-container>
+
+                <ng-container *ngIf="column === 'docValidity'">
+                    <div class="relative group">
+                        <button (click)="openDocuments()" class="flex flex-row gap-1 items-center">
+                            <span class="p-2 bg-blue-500 text-white">
+                                <i class="fa-solid fa-file-alt"></i>
+                            </span>
+                        </button>
+                        <div
+                            class="absolute top-1/2 left-1 px-2 py-1 text-xs text-white bg-black rounded shadow-md opacity-0 group-hover:opacity-100 transition pointer-events-none z-20">
+                            Document
+                        </div>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngIf="column === 'inspection'">
+                    <div class="relative group">
+                        <button (click)="inspect()" class="flex flex-row gap-1 items-center">
+                            <span class="p-2 bg-pink-500 text-white">
+                                <i class="fa-solid fa-check-circle"></i>
+                            </span>
+                        </button>
+                        <div
+                            class="absolute top-1/2 left-full ml-2 -translate-y-1  px-2 py-1 text-xs text-white bg-black rounded shadow-md opacity-0 group-hover:opacity-100 transition pointer-events-none z-20">
+                            Inspection
+                        </div>
+                    </div>
+
+                </ng-container>
+
+                <ng-container *ngIf="column === 'active'">
+                    <button (click)="toggleActive()" class="flex flex-row gap-1 items-center">
+                        <span [ngClass]="isActive ? 'bg-green-500' : 'bg-red-500'" class="p-2 text-white">
+                            <i [ngClass]="isActive ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off'"></i>
+                        </span>
+                    </button>                   
+                </ng-container>
+
+                <ng-container *ngIf="column === 'trip'">
+                    <button (click)="addTrip()" class="flex flex-row gap-1 items-center">
+                        <span class="p-2 bg-green-600 text-white">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                </ng-container>
+
+                <ng-container *ngIf="column === 'service'">
+                    <button (click)="openService()" class="flex flex-row gap-1 items-center">
+                        <span class="p-2 bg-blue-600 text-white">
+                            <i class="fa-solid fa-gear"></i>
+                        </span>
+                    </button>
                 </ng-container>
             </td>
 
