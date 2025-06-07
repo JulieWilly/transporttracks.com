@@ -4,6 +4,8 @@ import { SharableTitleComponent } from '../../../../ReuseableComponents/sharable
 import { QuickNavigationComponent } from '../../../../ReuseableComponents/quick-navigation/quick-navigation.component';
 import { SharableTableComponent } from '../../../../ReuseableComponents/sharable-table/sharable-table.component';
 import { MatTableDataSource } from '@angular/material/table';
+import { StatementsBtnComponent } from '../../../../ReuseableComponents/statements-btn/statements-btn.component';
+
 
 @Component({
   selector: 'app-manifest-register',
@@ -12,6 +14,7 @@ import { MatTableDataSource } from '@angular/material/table';
     QuickNavigationComponent,
     SharableTableComponent,
     SharableTitleComponent,
+    StatementsBtnComponent,
   ],
   templateUrl: './manifest-register.component.html',
   styleUrl: './manifest-register.component.css',
@@ -28,7 +31,7 @@ export class ManifestRegisterComponent {
     'actions',
   ];
 
-  placeholderText:string = 'Manifest No / Vehicle No';
+  placeholderText: string = 'Manifest No / Vehicle No';
   columnHeaders: Record<string, string> = {
     slNo: 'SL No',
     mfNo: 'MF/No',

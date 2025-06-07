@@ -9,12 +9,12 @@ import { SharableTitleComponent } from '../../../../ReuseableComponents/sharable
 @Component({
   selector: 'app-bulk-booking-print-mahagoenkar',
   imports: [
-DateFromComponent,
-DateToComponent,
-SearchByComponent,
-SharableSearchInputComponent,
-QuickNavigationComponent,
-SharableTitleComponent
+    DateFromComponent,
+    DateToComponent,
+    SearchByComponent,
+    SharableSearchInputComponent,
+    QuickNavigationComponent,
+    SharableTitleComponent,
   ],
   templateUrl: './bulk-booking-print-mahagoenkar.component.html',
   styleUrl: './bulk-booking-print-mahagoenkar.component.css',

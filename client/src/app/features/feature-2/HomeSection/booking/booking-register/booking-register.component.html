@@ -14,15 +14,16 @@
     <div class="mt-2">
         <div class="flex flex-row items-center justify-between">
             <app-sharable-title [title]="'Booking Register'"></app-sharable-title>
-            <span class="pt-1 pb-1 pl-2 pr-2 bg-blue-500 text-white cursor-pointer"> <i class="fa-solid fa-book"></i> Statements</span>
+            <span class="pt-1 pb-1 pl-2 pr-2 bg-blue-500 text-white cursor-pointer"> <i class="fa-solid fa-book"></i>
+                Statements</span>
         </div>
         <div class="flex flex-row gap-2 items-center justify-start mt-2 mb-2">
-            <div class="relative max-w-sm">
+            <!-- <div class="relative max-w-sm">
                 <select
                     class="w-full px-3 py-2 rounded-sm border border-transparent focus:outline-none focus:border-blue-500 text-gray-700 bg-white appearance-none transition">
                     <option value="">-- All --</option>
-                    <option value="gst">GST INVOICE</option>
-                    <option value="challan">BOOKING CHALLAN</option>
+                    <option value="gst"></option>
+                    <option value="challan"></option>
                 </select>
                 <div class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
@@ -30,7 +31,8 @@
                         <path d="M6 9l6 6 6-6" />
                     </svg>
                 </div>
-            </div>
+            </div> -->
+            <app-short-drop-down-1 [dropDownInput]="dropDownInput"></app-short-drop-down-1>
             <div class="relative max-w-sm">
                 <select
                     class="w-full px-3 py-2 rounded-sm border border-transparent focus:outline-none focus:border-blue-500 text-gray-700 bg-white appearance-none transition">

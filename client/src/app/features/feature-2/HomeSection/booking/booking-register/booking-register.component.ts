@@ -14,11 +14,13 @@ import { QuickNavigationComponent } from '../../../../ReuseableComponents/quick-
 import { SharableTableComponent } from '../../../../ReuseableComponents/sharable-table/sharable-table.component';
 import { ExpandableTableComponent } from '../../../../ReuseableComponents/expandable-table/expandable-table.component';
 import { CommonModule } from '@angular/common';
+import { ShortDropDown1Component } from '../../../../ReuseableComponents/short-drop-down-1/short-drop-down-1.component';
 
 @Component({
   standalone: true,
   selector: 'app-booking-register',
   imports: [
+    ShortDropDown1Component,
     HttpClientModule,
     MatTableModule,
     MatFormFieldModule,
@@ -57,6 +59,8 @@ export class BookingRegisterComponent {
     'actions',
   ];
 
+  dropDownInput: string[] = ['GST INVOICE ', 'BOOKING CHALLAN'];
+
   columnHeaders: Record<string, string> = {
     number: '#',
     cnNo: 'CN No.',
@@ -74,7 +78,7 @@ export class BookingRegisterComponent {
 
   dataSource = new MatTableDataSource(CN_DATA);
   value = 'Clear me';
-  currentPage:string = 'Booking Register';
+  currentPage: string = 'Booking Register';
 }
 
 export interface CNRecord {

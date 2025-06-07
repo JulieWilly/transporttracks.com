@@ -1,25 +1,33 @@
 import { Component } from '@angular/core';
 import { SharableSearchInputComponent } from '../../../../ReuseableComponents/sharable-search-input/sharable-search-input.component';
 import { SharableTitleComponent } from '../../../../ReuseableComponents/sharable-title/sharable-title.component';
-import { SharableTableComponent } from '../../../../ReuseableComponents/sharable-table/sharable-table.component';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+import { ExpandableTableComponent } from '../../../../ReuseableComponents/expandable-table/expandable-table.component';
+import { QuickNavigationComponent } from '../../../../ReuseableComponents/quick-navigation/quick-navigation.component';
+import { BackComponent } from '../../../../ReuseableComponents/back/back.component';
+import { StatementsBtnComponent } from '../../../../ReuseableComponents/statements-btn/statements-btn.component';
+import { ShortDropDown1Component } from '../../../../ReuseableComponents/short-drop-down-1/short-drop-down-1.component';
 
 @Component({
   selector: 'app-vehicle-hire-register',
   imports: [
-    SharableTableComponent,
     SharableTitleComponent,
     SharableSearchInputComponent,
-    MatIconModule,
-    MatButtonModule,
+    ExpandableTableComponent,
+    QuickNavigationComponent,
+    BackComponent,
+    StatementsBtnComponent,
+    ShortDropDown1Component,
   ],
   templateUrl: './vehicle-hire-register.component.html',
   styleUrl: './vehicle-hire-register.component.css',
 })
 export class VehicleHireRegisterComponent {
-  dataSource = new MatTableDataSource(HIRE_DATA);
+  placeholderText: string = 'Manifest No/Vehicle No';
+  currentPage: string = 'Vehicle Hire Register';
+  dataSource = new MatTableDataSource();
+  dropDownInput:string[] = ['-- Filter By Ownership type --', 'hired', 'owned'];
+
   displayedColumns: string[] = [
     'sl',
     'hireDetails',
@@ -34,11 +42,24 @@ export class VehicleHireRegisterComponent {
     'more',
   ];
 
+  columnHeaders: Record<string, string> = {
+    sl: 'SL No',
+    hireDetails: 'Hire Details',
+    vehicleDetails: 'Vehicle Details',
+    manifestDetails: 'Manifest Details',
+    chargeAmount: 'Charge Amount',
+    advance: 'Advance',
+    paid: 'Paid',
+    payExpense: 'Pay Expense',
+    charges: 'Charges',
+    print: 'Print',
+    more: 'More',
+  };
+
   addNewLoadSlip() {
     alert('this will click a button');
   }
 }
-
 
 export interface HireRecord {
   sl: number;
@@ -186,4 +207,3 @@ export const HIRE_DATA: HireRecord[] = [
     more: 'View',
   },
 ];
-

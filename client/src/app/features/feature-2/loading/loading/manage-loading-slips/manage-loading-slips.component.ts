@@ -1,26 +1,28 @@
 import { Component } from '@angular/core';
 import { SharableTableComponent } from '../../../../ReuseableComponents/sharable-table/sharable-table.component';
 import { MatTableDataSource } from '@angular/material/table';
-import { SharableSearchInputComponent } from '../../../../ReuseableComponents/sharable-search-input/sharable-search-input.component';
+import { QuickNavigationComponent } from '../../../../ReuseableComponents/quick-navigation/quick-navigation.component';
 import { SharableTitleComponent } from '../../../../ReuseableComponents/sharable-title/sharable-title.component';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-
+import { AddBtnComponent } from '../../../../ReuseableComponents/add-btn/add-btn.component';
+import { SharableSearchInputComponent } from '../../../../ReuseableComponents/sharable-search-input/sharable-search-input.component';
 
 @Component({
   selector: 'app-manage-loading-slips',
   imports: [
     SharableTableComponent,
-    SharableSearchInputComponent,
+    QuickNavigationComponent,
     SharableTitleComponent,
-    MatIconModule,
-    MatButtonModule,
+    AddBtnComponent,
+    SharableSearchInputComponent,
   ],
   templateUrl: './manage-loading-slips.component.html',
   styleUrl: './manage-loading-slips.component.css',
 })
 export class ManageLoadingSlipsComponent {
+  btnName: string = 'Add new';
+  currentPage: string = 'Manage Loading Slips';
   dataSource = new MatTableDataSource(MANIFEST_DATA);
+  placeholderText:string = 'Search by Vehicle No'
 
   // displayedColumns = ['id', 'name', 'email'];
   displayedColumns: string[] = [
@@ -32,9 +34,21 @@ export class ManageLoadingSlipsComponent {
     'vehicleNo',
     'bag',
     'plant',
-    'actions'
+    'actions',
   ];
   value = '';
+
+  columnHeaders: Record<string, string> = {
+    slNo: 'SL No',
+    date: 'Date',
+    loadingSlip: 'Loading Slip',
+    billToParty: 'Bill To Party',
+    shipToParty: 'Ship To Party',
+    vehicleNo: 'Vehicle No',
+    bag: 'Bag',
+    plant: 'Plant',
+    actions: 'Actions',
+  };
 
   addNewLoadSlip() {
     alert('This button will add a new load slip');
