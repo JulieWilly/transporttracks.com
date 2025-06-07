@@ -10,22 +10,22 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
-
+import { DateFromComponent } from '../../../../ReuseableComponents/date-from/date-from.component';
+import { DateToComponent } from '../../../../ReuseableComponents/date-to/date-to.component';
+import { SearchByComponent } from '../../../../ReuseableComponents/search-by/search-by.component';
+import { SharableSearchInputComponent } from '../../../../ReuseableComponents/sharable-search-input/sharable-search-input.component';
+import { QuickNavigationComponent } from '../../../../ReuseableComponents/quick-navigation/quick-navigation.component';
+import { SharableTitleComponent } from '../../../../ReuseableComponents/sharable-title/sharable-title.component';
 
 @Component({
   selector: 'app-date-wise-bulk-booking-print',
   imports: [
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatTimepickerModule,
-    MatDatepickerModule,
-    FormsModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatNativeDateModule,
+    DateFromComponent,
+    DateToComponent,
+    SearchByComponent,
+    SharableSearchInputComponent,
+    QuickNavigationComponent,
+    SharableTitleComponent,
   ],
   templateUrl: './date-wise-bulk-booking-print.component.html',
   styleUrl: './date-wise-bulk-booking-print.component.css',

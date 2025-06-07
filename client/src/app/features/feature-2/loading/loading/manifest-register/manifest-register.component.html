@@ -1,91 +1,41 @@
-<section class="pl-10 pr-10">
-    <div class="flex flex-row justify-between items-center ">
-        <h1 class=" text-xl text-white font-bold tracking-wide">Manifest List</h1>
+<section class="pr-6 pl-6">
 
-        <div class="flex flex-row gap-2 items-center ">
-            <div class="p-2 flex flex-row gap-2 bg-[#00001A] cursor-pointer hover:bg-black">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                    fill="#e3e3e3">
-                    <path
-                        d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-480H200v480Zm80-280v-80h400v80H280Zm0 160v-80h240v80H280Z" />
-                </svg>
-                <h1 class="tracking-wide text-white font-light">Statements</h1>
-            </div>
-            <div class="p-2 flex flex-row gap-2 bg-[#00001A] cursor-pointer hover:bg-black">
-                <mat-icon class="text-white">
-                    search
-                </mat-icon>
-                <h1 class="tracking-wide text-white font-light">Manifest Summary</h1>
-            </div>
+    <div class="flex flex-row items-center justify-between p-2">
+        <app-quick-navigation currentPage="currentPage"></app-quick-navigation>
+        <div class="flex flex-row gap-4 items-center">
+            <span class="capitalize tracking-wide text-brandPrimary bg-secondary  text-primaryFont cursor-pointer p-1">
+                Track Your Bookings
+            </span>
+            <span class="flex flex-row gap-2 items-center bg-primary p-1 rounded-sm cursor-pointer text-primaryFont">
+                <span class="text-white">FY:</span>
+                <span class="text-white">2025 - 2026</span>
+            </span>
         </div>
     </div>
-    <section class="example-container mat-elevation-z8" tabindex="0">
-        <div class="">
-            <mat-form-field>
-                <mat-label>Search</mat-label>
-                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-            </mat-form-field>
+    <div class="flex flex-row justify-between items-center mb-2 mt-3">
+        <app-sharable-title title="Manifest List"></app-sharable-title>
 
-            <div class="mat-elevation-z8 mt-2">
-                <table mat-table [dataSource]="dataSource" matSort>
-
-                    <ng-container matColumnDef="snNo">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> SL No </th>
-                        <td mat-cell *matCellDef="let row"> {{row.snNo}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="manifestNo">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> MF/NO </th>
-                        <td mat-cell *matCellDef="let row"> {{row.manifestNo}}</td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="date">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
-                        <td mat-cell *matCellDef="let row"> {{row.date}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="from">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> FROM </th>
-                        <td mat-cell *matCellDef="let row"> {{row.from}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="to">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> TO </th>
-                        <td mat-cell *matCellDef="let row"> {{row.to}} </td>
-                    </ng-container>
-                    <ng-container matColumnDef="vehicleNo">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Vehicle No </th>
-                        <td mat-cell *matCellDef="let row"> {{row.vehicleNo}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="status">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-                        <td mat-cell *matCellDef="let row"> {{row.status}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="actions">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
-                        <td mat-cell *matCellDef="let row">
-                            <mat-button-toggle-group name="fontStyle" [(ngModel)]="row.fontStyle"
-                                aria-label="Font Style">
-                                <mat-button-toggle value="edit">Edit</mat-button-toggle>
-                                <mat-button-toggle value="print">Print</mat-button-toggle>
-                                <mat-button-toggle value="view">Delete</mat-button-toggle>
-                                <mat-button-toggle value="delete">Delete</mat-button-toggle>
-                            </mat-button-toggle-group>
-                        </td>
-                    </ng-container>
-
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-                    <tr class="mat-row" *matNoDataRow>
-                        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-                    </tr>
-                </table>
-
-                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-            </div>
+        <div class="flex gap-2">
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z" />
+                </svg>
+                Statements
+            </button>
+        
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M21 21l-4.35-4.35M16.65 16.65A7.5 7.5 0 1010.5 3a7.5 7.5 0 006.15 13.65z" />
+                </svg>
+                Manifest Summary
+            </button>
         </div>
-    </section>
+          
+    </div>
+
+    <app-sharable-search-input></app-sharable-search-input>
+
+    <app-sharable-table [dataSource]="dataSource"  [displayedColumns]="displayedColumns" [showEdit]="true" [showPrint]="true" [showDelete]="true" [columnHeaders]="columnHeaders" ></app-sharable-table>
 </section>

@@ -1,20 +1,50 @@
-import { MatIconModule } from '@angular/material/icon';
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { MatTableModule, MatTableDataSource } from '@angular/material/table';
-import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
-import { AfterViewInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { Component } from '@angular/core';
+import { SharableSearchInputComponent } from '../../../../ReuseableComponents/sharable-search-input/sharable-search-input.component';
+import { SharableTitleComponent } from '../../../../ReuseableComponents/sharable-title/sharable-title.component';
+import { QuickNavigationComponent } from '../../../../ReuseableComponents/quick-navigation/quick-navigation.component';
+import { SharableTableComponent } from '../../../../ReuseableComponents/sharable-table/sharable-table.component';
+import { MatTableDataSource } from '@angular/material/table';
+
+@Component({
+  selector: 'app-manifest-register',
+  imports: [
+    SharableSearchInputComponent,
+    QuickNavigationComponent,
+    SharableTableComponent,
+    SharableTitleComponent,
+  ],
+  templateUrl: './manifest-register.component.html',
+  styleUrl: './manifest-register.component.css',
+})
+export class ManifestRegisterComponent {
+  displayedColumns: string[] = [
+    'slNo',
+    'mfNo',
+    'date',
+    'from',
+    'to',
+    'vehicleNo',
+    'status',
+    'action',
+  ];
+
+  columnHeaders: Record<string, string> = {
+    slNo: 'SL No',
+    mfNo: 'MF/No',
+    date: 'Date',
+    from: 'From',
+    to: 'To',
+    vehicleNo: 'Vehicle No',
+    status: 'Status',
+    action: 'Action',
+  };
+
+  dataSource = new MatTableDataSource(MANIFEST_DATA);
+}
 
 export interface ManifestRecord {
-  snNo: number;
-  manifestNo: string;
+  slNo: number;
+  mfNo: string;
   date: string;
   from: string;
   to: string;
@@ -22,148 +52,97 @@ export interface ManifestRecord {
   status: string;
 }
 
-@Component({
-  selector: 'app-manifest-register',
-  imports: [
-    HttpClientModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatIconModule,
-    MatButtonModule,
-    FormsModule,
-    MatPaginatorModule,
-    MatButtonToggleModule,
-  ],
-  templateUrl: './manifest-register.component.html',
-  styleUrl: './manifest-register.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class ManifestRegisterComponent implements AfterViewInit {
-  displayedColumns: string[] = [
-    'snNo',
-    'manifestNo',
-    'date',
-    'from',
-    'to',
-    'vehicleNo',
-    'status',
-    'actions',
-  ];
-  dataSource: MatTableDataSource<ManifestRecord>;
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  constructor() {
-    this.dataSource = new MatTableDataSource(manifestData);
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
-}
-
-const manifestData: ManifestRecord[] = [
+export const MANIFEST_DATA: ManifestRecord[] = [
   {
-    snNo: 1,
-    manifestNo: 'ASC00025',
-    date: '20-05-2025',
-    from: 'BOOKING',
-    to: 'DELIVERY',
-    vehicleNo: 'TR02 5112',
-    status: 'New Menifest',
-  },
-  {
-    snNo: 2,
-    manifestNo: 'ASC00024',
-    date: '20-05-2025',
-    from: 'BOOKING',
-    to: 'DELIVERY',
-    vehicleNo: 'TR02 5112',
-    status: 'New Menifest',
-  },
-  {
-    snNo: 3,
-    manifestNo: 'ASC00023 (770238)',
-    date: '20-05-2025',
-    from: 'BOOKING',
-    to: 'DELIVERY',
-    vehicleNo: 'TR02 5112',
-    status: 'New Menifest',
-  },
-  {
-    snNo: 4,
-    manifestNo: 'ASC00022',
-    date: '19-05-2025',
-    from: 'BOOKING',
-    to: 'DELIVERY',
-    vehicleNo: 'TR02 5112',
+    slNo: 1,
+    mfNo: 'MF001',
+    date: '2025-06-01',
+    from: 'Delhi',
+    to: 'Mumbai',
+    vehicleNo: 'DL01AB1234',
     status: 'In Transit',
   },
   {
-    snNo: 5,
-    manifestNo: 'ASC00021',
-    date: '17-05-2025',
-    from: 'BOOKING',
-    to: 'DELIVERY',
-    vehicleNo: 'TR02 5112',
-    status: 'At Destination',
+    slNo: 2,
+    mfNo: 'MF002',
+    date: '2025-06-02',
+    from: 'Mumbai',
+    to: 'Chennai',
+    vehicleNo: 'MH02CD5678',
+    status: 'Delivered',
   },
   {
-    snNo: 6,
-    manifestNo: 'ASC00020',
-    date: '17-05-2025',
-    from: 'BOOKING',
-    to: 'DELIVERY',
-    vehicleNo: 'TR02 5112',
-    status: 'At Destination',
+    slNo: 3,
+    mfNo: 'MF003',
+    date: '2025-06-03',
+    from: 'Kolkata',
+    to: 'Delhi',
+    vehicleNo: 'WB03EF9012',
+    status: 'Pending',
   },
   {
-    snNo: 7,
-    manifestNo: 'ASC00019',
-    date: '16-05-2025',
-    from: 'BOOKING',
-    to: 'DELIVERY',
-    vehicleNo: 'TR02 5112',
+    slNo: 4,
+    mfNo: 'MF004',
+    date: '2025-06-04',
+    from: 'Bangalore',
+    to: 'Hyderabad',
+    vehicleNo: 'KA04GH3456',
     status: 'In Transit',
   },
   {
-    snNo: 8,
-    manifestNo: 'ASC00018',
-    date: '15-05-2025',
-    from: 'BOOKING',
-    to: 'DELIVERY',
-    vehicleNo: 'TR02 5112',
-    status: 'At Destination',
+    slNo: 5,
+    mfNo: 'MF005',
+    date: '2025-06-05',
+    from: 'Pune',
+    to: 'Ahmedabad',
+    vehicleNo: 'MH05IJ7890',
+    status: 'Delivered',
   },
   {
-    snNo: 9,
-    manifestNo: 'ASC00017',
-    date: '14-05-2025',
-    from: 'BOOKING',
-    to: 'DELIVERY',
-    vehicleNo: 'TR02 5112',
-    status: 'At Destination',
-  },
-  {
-    snNo: 10,
-    manifestNo: 'ASC00016',
-    date: '12-05-2025',
-    from: 'BOOKING',
-    to: 'DELIVERY',
-    vehicleNo: 'TR02 5112',
+    slNo: 6,
+    mfNo: 'MF006',
+    date: '2025-06-06',
+    from: 'Nagpur',
+    to: 'Bhopal',
+    vehicleNo: 'MH06KL1234',
     status: 'In Transit',
+  },
+  {
+    slNo: 7,
+    mfNo: 'MF007',
+    date: '2025-06-07',
+    from: 'Indore',
+    to: 'Surat',
+    vehicleNo: 'MP07MN5678',
+    status: 'Pending',
+  },
+  {
+    slNo: 8,
+    mfNo: 'MF008',
+    date: '2025-06-08',
+    from: 'Ranchi',
+    to: 'Patna',
+    vehicleNo: 'JH08OP9012',
+    status: 'Delivered',
+  },
+  {
+    slNo: 9,
+    mfNo: 'MF009',
+    date: '2025-06-09',
+    from: 'Lucknow',
+    to: 'Kanpur',
+    vehicleNo: 'UP09QR3456',
+    status: 'In Transit',
+  },
+  {
+    slNo: 10,
+    mfNo: 'MF010',
+    date: '2025-06-10',
+    from: 'Jaipur',
+    to: 'Udaipur',
+    vehicleNo: 'RJ10ST7890',
+    status: 'Delivered',
   },
 ];
+

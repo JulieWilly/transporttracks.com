@@ -1,35 +1,24 @@
 import { Component } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { ChangeDetectionStrategy } from '@angular/core';
-import { MatTimepickerModule } from '@angular/material/timepicker';
-import { provideNativeDateAdapter } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatSelectModule } from '@angular/material/select';
-import { MatNativeDateModule } from '@angular/material/core';
+
+import { DateFromComponent } from '../../../../ReuseableComponents/date-from/date-from.component';
+import { DateToComponent } from '../../../../ReuseableComponents/date-to/date-to.component';
+import { SharableSearchInputComponent } from '../../../../ReuseableComponents/sharable-search-input/sharable-search-input.component';
+import { SharableTitleComponent } from '../../../../ReuseableComponents/sharable-title/sharable-title.component';
+import { QuickNavigationComponent } from '../../../../ReuseableComponents/quick-navigation/quick-navigation.component';
+import { SearchByComponent } from '../../../../ReuseableComponents/search-by/search-by.component';
 
 @Component({
   selector: 'app-bulk-booking-print-aayush',
   imports: [
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatTimepickerModule,
-    MatDatepickerModule,
-    FormsModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatNativeDateModule,
+    DateFromComponent,
+    DateToComponent,
+    SharableSearchInputComponent,
+    SharableTitleComponent,
+    QuickNavigationComponent,
+    SearchByComponent,
   ],
   templateUrl: './bulk-booking-print-aayush.component.html',
   styleUrl: './bulk-booking-print-aayush.component.css',
-  providers: [provideNativeDateAdapter()],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BulkBookingPrintAayushComponent {
   value = 'Clear me';
