@@ -26,7 +26,7 @@ export class VehicleHireRegisterComponent {
   placeholderText: string = 'Manifest No/Vehicle No';
   currentPage: string = 'Vehicle Hire Register';
   dataSource = new MatTableDataSource();
-  dropDownInput:string[] = ['-- Filter By Ownership type --', 'hired', 'owned'];
+  dropDownInput:string[] = ['Filter By Ownership Type', 'HIRED', 'OWNED'];
 
   displayedColumns: string[] = [
     'sl',

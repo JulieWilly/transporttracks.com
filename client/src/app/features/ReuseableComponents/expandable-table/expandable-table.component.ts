@@ -5,6 +5,8 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MoreOptionsBtnComponent } from '../more-options-btn/more-options-btn.component';
+
 
 @Component({
   selector: 'app-expandable-table',
@@ -15,6 +17,7 @@ import { CommonModule } from '@angular/common';
     MatPaginator,
     MatPaginatorModule,
     CommonModule,
+    MoreOptionsBtnComponent,
   ],
   templateUrl: './expandable-table.component.html',
   styleUrl: './expandable-table.component.css',
@@ -24,7 +27,12 @@ export class ExpandableTableComponent implements AfterViewInit {
   @Input() displayedColumns!: string[];
   // @Input() columnHeaders!: Record<string, string>;
   @Input() columnHeaders!: any;
-
+  @Input() showEdit = false;
+  @Input() showDelete = false;
+  @Input() showPrint = false;
+  @Input() showLinked = false;
+  @Input() showView = false;
+  @Input() showCollectBtn = false;
   // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   // columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
 
@@ -52,6 +60,37 @@ export class ExpandableTableComponent implements AfterViewInit {
     // console.log('Row', row);
     alert('Button has been clicked.');
   }
+
+  edit() {
+    // console.log('Edit:', element);
+  }
+
+  print() {
+    // console.log('Print:', element);
+  }
+
+  delete() {
+    // console.log('Delete:', element);
+  }
+
+  openDetails() {
+    // console.log('any', element);
+  }
+  openLinkedDetails() {}
+
+  inspect() {}
+
+  openDocuments() {}
+
+  isActive = false;
+
+  toggleActive() {
+    this.isActive = !this.isActive;
+  }
+
+  addTrip() {}
+
+  openService() {}
 }
 
 export interface PeriodicElement {
