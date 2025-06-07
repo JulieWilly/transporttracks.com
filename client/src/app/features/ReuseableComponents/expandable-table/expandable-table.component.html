@@ -4,15 +4,13 @@
         <ng-container matColumnDef="{{column}}">
             <th mat-header-cell *matHeaderCellDef style="color: #393E46; font-weight: bold; text-transform:uppercase;">
                 {{columnHeaders[column] || column}}</th>
-            <td mat-cell *matCellDef="let element" class=""
-                [ngClass]="column === 'status' ? 'text-red-500 font-semibold ' : ''">
+            <td mat-cell *matCellDef="let element" class="" [ngClass]="[
+            column === 'status' ? 'text-red-500 font-semibold' : '',
+            column === 'payExpense' ? 'py-2 px-4 rounded-sm bg-green-500 text-green-500' : ''
+          ]"
+          >
                 <ng-container>
                     {{ element[column] }}
-                </ng-container>
-                <ng-container *ngIf="column === 'payExpense'">
-                    <span class="py-2 px-4 rounded-sm bg-green-500 text-white">
-                        {{ element[column] }}
-                    </span>
                 </ng-container>
                 <ng-container *ngIf="column === 'actions'">
                     <div class="flex flex-row gap-2 items-center">
@@ -71,7 +69,7 @@
                                 View
                             </div>
                         </div>
-                        <button *ngIf="showCollectBtn"  (click)="onButtonClick(element)"
+                        <button *ngIf="showCollectBtn" (click)="onButtonClick(element)"
                             class="bg-blue-600 text-white px-4 py-2 rounded-sm hover:bg-blue-700 focus:outline-none">
                             Collect
                         </button>
