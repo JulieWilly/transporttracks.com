@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
@@ -29,7 +29,6 @@ import { MatRippleModule } from '@angular/material/core';
   ],
   templateUrl: './sharable-table.component.html',
   styleUrl: './sharable-table.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SharableTableComponent implements AfterViewInit {
   @Input() dataSource!: MatTableDataSource<any>;
@@ -46,6 +45,20 @@ export class SharableTableComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  status: boolean = false;
+  @Output() statusChange = new EventEmitter<boolean>();
+
+  toggleStatus() {
+    this.status = !this.status;
+    this.statusChange.emit(this.status);
+  }
+
+  getButtonClasses(): string {
+    return this.status
+      ? 'bg-green-500 text-white hover:bg-green-600'
+      : 'bg-red-500 text-white hover:bg-red-600';
   }
 
   edit() {
@@ -79,5 +92,3 @@ export class SharableTableComponent implements AfterViewInit {
 
   openService() {}
 }
-
-

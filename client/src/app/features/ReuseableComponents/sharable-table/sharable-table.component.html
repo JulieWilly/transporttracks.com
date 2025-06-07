@@ -102,12 +102,16 @@
 
                 </ng-container>
 
-                <ng-container *ngIf="column === 'active'">
-                    <button (click)="toggleActive()" class="flex flex-row gap-1 items-center">
+                <ng-container *ngIf="column === 'active' || column === 'status' ">
+                    <!-- <button (click)="toggleActive()" class="flex flex-row gap-1 items-center">
                         <span [ngClass]="isActive ? 'bg-green-500' : 'bg-red-500'" class="py-1 px-2 text-white">
                             <i [ngClass]="isActive ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off'"></i>
                         </span>
-                    </button>                   
+                    </button>-->
+                    <button (click)="toggleStatus()" [class]="getButtonClasses()"
+                        class="px-4 py-2 rounded-md font-medium transition-colors duration-200 ">
+                        {{ status ? 'Yes' : 'No' }}
+                    </button>
                 </ng-container>
 
                 <ng-container *ngIf="column === 'trip'">
