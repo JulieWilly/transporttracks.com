@@ -4,6 +4,7 @@ import { SharableTitleComponent } from '../../../ReuseableComponents/sharable-ti
 import { SharableSearchInputComponent } from '../../../ReuseableComponents/sharable-search-input/sharable-search-input.component';
 import { SharableTableComponent } from '../../../ReuseableComponents/sharable-table/sharable-table.component';
 import { MatTableDataSource } from '@angular/material/table';
+import { BackComponent } from '../../../ReuseableComponents/back/back.component';
 
 @Component({
   selector: 'app-vehicle-pending-payments',
@@ -12,6 +13,7 @@ import { MatTableDataSource } from '@angular/material/table';
     SharableTitleComponent,
     SharableSearchInputComponent,
     SharableTableComponent,
+    BackComponent
   ],
   templateUrl: './vehicle-pending-payments.component.html',
   styleUrl: './vehicle-pending-payments.component.css',
