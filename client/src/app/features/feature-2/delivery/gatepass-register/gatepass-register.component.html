@@ -1,1 +1,28 @@
-<p>gatepass-register works!</p>
+<section class="pr-6 pl-6">
+    <div class="flex flex-row items-center justify-between p-2">
+        <app-quick-navigation [currentPage]="currentPage"></app-quick-navigation>
+        <div class="flex flex-row gap-4 items-center">
+            <span class="capitalize tracking-wide text-brandPrimary bg-secondary  text-primaryFont cursor-pointer p-1">
+                Track Your Bookings
+            </span>
+            <span class="flex flex-row gap-2 items-center bg-primary p-1 rounded-sm cursor-pointer text-primaryFont">
+                <span class="text-white">FY:</span>
+                <span class="text-white">2025 - 2026</span>
+            </span>
+        </div>
+    </div>
+    <div class="flex flex-row justify-between items-center mb-2 mt-3">
+        <app-sharable-title title="Gatepass Register"></app-sharable-title>
+        <app-search-btn></app-search-btn>
+    </div>
+
+    <div class="flex flex-row gap-2 items-center justify-start ">
+        <app-sharable-search-input [placeholderText]="placeholderText"></app-sharable-search-input>
+    </div>
+
+    <div class="mt-2">
+        <app-sharable-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"
+            [columnHeaders]="columnHeaders" [showView]="true" [showEdit]="true" [showPrint]="true" [showDelete]="true">
+        </app-sharable-table>
+    </div>
+</section>

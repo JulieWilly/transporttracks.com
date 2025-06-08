@@ -6,6 +6,7 @@ import { BackComponent } from '../../../ReuseableComponents/back/back.component'
 import { DateFromComponent } from '../../../ReuseableComponents/date-from/date-from.component';
 import { DateToComponent } from '../../../ReuseableComponents/date-to/date-to.component';
 import { SearchByComponent } from '../../../ReuseableComponents/search-by/search-by.component';
+import { SearchBtnComponent } from '../../../ReuseableComponents/search-btn/search-btn.component';
 
 @Component({
   selector: 'app-lr-consignment-incoming-register',
@@ -17,6 +18,7 @@ import { SearchByComponent } from '../../../ReuseableComponents/search-by/search
     DateToComponent,
     DateFromComponent,
     SearchByComponent,
+    SearchBtnComponent,
   ],
   templateUrl: './lr-consignment-incoming-register.component.html',
   styleUrl: './lr-consignment-incoming-register.component.css',
