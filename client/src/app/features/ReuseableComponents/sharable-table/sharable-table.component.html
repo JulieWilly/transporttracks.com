@@ -86,6 +86,15 @@
                                 </span>
                             </button>
                         </div>
+
+                        <div class="relative group">
+                            <button *ngIf="showPay" (click)="makePayment()" class="flex flex-row gap-1 items-center">
+                                <span class="py-1 px-2 bg-red-500 text-white flex flex-row gap-1 items-center">
+                                    <i class="fa-solid fa-indian-rupee-sign"></i>
+                                    Pay
+                                </span>
+                            </button>
+                        </div>
                     </div>
                 </ng-container>
 
