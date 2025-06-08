@@ -1,1 +1,51 @@
-<p>lr-consignment-incoming-register works!</p>
+<section class="pr-6 pl-6">
+
+    <div class="flex flex-row items-center justify-between p-2">
+        <app-quick-navigation currentPage="currentPage"></app-quick-navigation>
+        <div class="flex flex-row gap-4 items-center">
+            <span class="capitalize tracking-wide text-brandPrimary bg-secondary  text-primaryFont cursor-pointer p-1">
+                Track Your Bookings
+            </span>
+            <span class="flex flex-row gap-2 items-center bg-primary p-1 rounded-sm cursor-pointer text-primaryFont">
+                <span class="text-white">FY:</span>
+                <span class="text-white">2025 - 2026</span>
+            </span>
+        </div>
+    </div>
+    <div class="flex flex-row justify-between items-center mb-2 mt-3">
+        <app-sharable-title title="Booking Register Report"></app-sharable-title>
+        <div class="flex flex-row items-center gap-3">
+            <app-dropdown-btn></app-dropdown-btn>
+            <app-back></app-back>
+        </div>
+    </div>
+
+    <div class="bg-white mt-4 p-4 rounded shadow w-full flex flex-wrap items-center gap-3">
+        <app-date-from></app-date-from>
+        <app-date-to></app-date-to>
+        <div class="flex flex-row gap-2">
+            <div class="flex flex-row gap-2"><input type="checkbox"> <label for="">Branch</label></div>
+            <div class="flex flex-row gap-2"><input type="checkbox"> <label for="">Branch</label></div>
+        </div>
+        <app-search-by></app-search-by>
+
+        <div>
+            <label for="toDate" class="block text-sm font-semibold mb-1">Incoming From:</label>
+            <select id="searchBy" class="border rounded px-3 py-2 w-44 focus:outline-none focus:border-blue-500">
+                <option value="consignor">CONSIGNOR</option>
+                <option value="consignee">CONSIGNEE</option>
+            </select>
+        </div>
+        <div>
+            <label class="block text-sm font-semibold mb-1 invisible">Label</label>
+            <button
+                class="bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded flex items-center">
+                <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-4.35-4.35M16.65 16.65A7.5 7.5 0 1010.5 3a7.5 7.5 0 006.15 13.65z" />
+                </svg>
+                Search
+            </button>
+        </div>
+    </div>
+</section>
