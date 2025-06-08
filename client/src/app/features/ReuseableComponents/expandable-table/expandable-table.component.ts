@@ -33,6 +33,7 @@ export class ExpandableTableComponent implements AfterViewInit {
   @Input() showLinked = false;
   @Input() showView = false;
   @Input() showCollectBtn = false;
+  @Input() showUpload = false;
   // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   // columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
 
@@ -91,6 +92,10 @@ export class ExpandableTableComponent implements AfterViewInit {
   addTrip() {}
 
   openService() {}
+
+  uploadFiles() {}
+
+  mobileUpload() {}
 }
 
 export interface PeriodicElement {
