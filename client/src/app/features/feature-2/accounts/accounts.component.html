@@ -1,1 +1,73 @@
-<p>accounts works!</p>
+<section class="pr-6 pl-6">
+    <div class="flex flex-row items-center justify-between p-2">
+        <app-quick-navigation [currentPage]="currentPage"></app-quick-navigation>
+        <div class="flex flex-row gap-4 items-center">
+            <span class="capitalize tracking-wide text-brandPrimary bg-secondary  text-primaryFont cursor-pointer p-1">
+                Track Your Bookings
+            </span>
+            <span class="flex flex-row gap-2 items-center bg-primary p-1 rounded-sm cursor-pointer text-primaryFont">
+                <span class="text-white">FY:</span>
+                <span class="text-white">2025 - 2026</span>
+            </span>
+        </div>
+    </div>
+    <div class="flex flex-row justify-between items-center mb-2 mt-3">
+        <app-sharable-title title="Account Management"></app-sharable-title>
+
+        <div class="flex flex-row gap-2 items-center">
+            <button
+                class="bg-pink-500 hover:bg-pink-400 text-white font-semibold px-3 py-1 rounded flex items-center shadow capitalize tracking-wide">
+                <i class="fa fa-search mr-2"></i>
+                Advanced Search
+            </button>
+
+            <button
+                class="bg-blue-600 hover:bg-blue-400 text-white font-semibold px-3 py-1 rounded flex items-center shadow capitalize tracking-wide">
+                <i class="fa fa-plus mr-2"></i>
+                Asssigned Accounts
+            </button>
+
+            <app-add-btn [btnName]="btnName"></app-add-btn>
+        </div>
+    </div>
+
+    <div class="flex flex-row gap-2 items-center justify-start ">
+        <app-short-drop-down-1 [dropDownInput]="dropDownInput"></app-short-drop-down-1>
+        <app-sharable-search-input [placeholderText]="placeholderText"></app-sharable-search-input>
+        <app-short-drop-down-1 [dropDownInput]="dropDownInput"></app-short-drop-down-1>
+    </div>
+
+    <div class="mt-4">
+        <app-sharable-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"
+            [columnHeaders]="columnHeaders" [showEdit]="true">
+        </app-sharable-table>
+    </div>
+
+    <section class="mt-4">
+        <div class="flex gap-1 mt-4">
+            <!-- Document Renewal Register -->
+            <button class="flex items-center bg-green-600 text-white px-3 py-1 rounded">
+                Upload Accounts / Party  from Excel
+                <span class="ml-2 bg-green-800 px-2 py-1 rounded">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                </span>
+            </button>
+    
+            <!-- Upload Vehicles from Excel -->
+            <button class="flex items-center bg-blue-600 text-white px-3 py-1 rounded">
+                Save Uploaded  Accounts / Party
+                <span class="ml-2 bg-blue-800 px-2 py-1 rounded">
+                    <i class="fas fa-save"></i>
+                </span>
+            </button>
+    
+            <!-- Save Uploaded Vehicles -->
+            <button class="flex items-center bg-back_bg text-white px-3 py-1 rounded">
+                Export to Excel
+                <span class="ml-2 bg-green-800 px-2 py-1 rounded">
+                    <i class="fa-solid fa-file-export"></i>
+                </span>
+            </button>
+        </div>
+    </section>
+</section>
