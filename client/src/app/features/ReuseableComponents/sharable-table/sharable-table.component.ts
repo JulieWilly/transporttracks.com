@@ -41,6 +41,7 @@ export class SharableTableComponent implements AfterViewInit {
   @Input() showLinked = false;
   @Input() toDeliver = false;
   @Input() showPay = false;
+  @Input() showUpload = false;
 
   value = 'Clear me';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -96,4 +97,8 @@ export class SharableTableComponent implements AfterViewInit {
   deliver() {}
 
   makePayment() {}
+
+  uploadFiles() {}
+
+  mobileUpload(){}
 }
