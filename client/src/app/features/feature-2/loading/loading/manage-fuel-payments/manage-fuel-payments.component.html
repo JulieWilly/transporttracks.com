@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="flex flex-row justify-between items-center mb-2 mt-3">
-        <app-sharable-title title="Service List"></app-sharable-title>
+        <app-sharable-title title="Manage Fuel Payments"></app-sharable-title>
         <div class="flex flex-row items-center gap-3">
             <app-back></app-back>
             <app-add-btn [btnName]="btnName"></app-add-btn>
@@ -20,14 +20,13 @@
     </div>
 
     <div class="flex flex-row gap-2 items-center justify-start ">
-        <div class="flex flex-col ">
-            <label class="hidden"></label>
+        <div class="flex flex-col">
+            <label class="hidden">label</label>
             <app-sharable-search-input [placeholderText]="placeholderText"></app-sharable-search-input>
-
         </div>
         <div class="flex flex-col ">
-            <label class="hidden"></label>
-            <app-short-drop-down-1></app-short-drop-down-1>
+            <label class="hidden ">label</label>
+            <app-short-drop-down-1 [dropDownInput]="dropDownInput"></app-short-drop-down-1>
         </div>
         <app-date-from></app-date-from>
         <app-date-to></app-date-to>
