@@ -24,7 +24,7 @@ export class BulkReceiveComponent {
   btnName: string = 'Add New';
   placeholderText: string = 'Search Here ....';
 
-  dataSource = new MatTableDataSource();
+  dataSource = new MatTableDataSource(paymentReceivedData);
 
   displayedColumns: string[] = [
     'slNo',
