@@ -100,5 +100,7 @@ export class SharableTableComponent implements AfterViewInit {
 
   uploadFiles() {}
 
-  mobileUpload(){}
+  mobileUpload() {}
+
+  collectPayment() {}
 }

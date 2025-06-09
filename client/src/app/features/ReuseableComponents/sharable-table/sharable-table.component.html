@@ -9,7 +9,8 @@
             <td mat-cell *matCellDef="let element" [ngClass]="[
                 column === 'transport' ? 'text-brandTertiary font-semibold ' : '',
                 column === 'pay' ? 'py-2 px-4 capitalize rounded-sm bg-green-500 text-green-500' : '',
-                column === 'driverNo' ? 'text-red-500' : ''
+                column === 'driverNo' ? 'text-red-500' : '',
+                column === 'paidBy' ? 'text-blue-500':''
               ]">
                 <ng-container *ngIf="column !== 'actions'">
                     {{element[column]}}
@@ -172,6 +173,13 @@
                             </span>
                         </button>
                     </div>
+                </ng-container>
+
+                <ng-container *ngIf="column === 'collect'">
+                    <button  (click)="collectPayment()"
+                        class="bg-green-600 text-white px-4 py-2 rounded-sm hover:bg-blue-700 focus:outline-none">
+                        <i class="fa-solid fa-indian-rupee-sign"></i> Collect
+                    </button>
                 </ng-container>
             </td>
 
