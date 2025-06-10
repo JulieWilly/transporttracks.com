@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { NAVIGATION_ITEMS, NavigationItem } from './navigationLinksData';
+
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
 import {
@@ -10,8 +11,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
-import { validateHeaderName } from 'http';
-import { link } from 'fs';
+// import { NAVIGATION_ITEMS, NavigationItem } from './navigationLinksData';
 
 @Component({
   selector: 'app-header',
@@ -44,7 +44,7 @@ export class HeaderComponent {
   operations = ['Booking', 'Loading', 'Dispatch', 'Receive', 'Delivery'];
   activeItem: NavigationItem | null = null;
   side_links = ['Link A', 'Link B', 'Link C', 'Link D'];
-// hasChildren: NavigationItem | null = null;/
+  // hasChildren: NavigationItem | null = null;/
   // navItems = NAVIGATION_ITEMS;
 
   // header toggle

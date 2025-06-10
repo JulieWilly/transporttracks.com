@@ -1,20 +1,22 @@
 <header class="text-black  h-14  bg-[#F8F9FB] z-10">
-    <nav class="w-full flex h-full pl-6 rounded-b-lg">
+    <nav class="w-full flex h-full pl-6 ">
         <ul class="pl-1 pr-1 text-black flex items-center justify-center h-full z-10" *ngFor="let navigation of links">
-            <li class="hover:text-gray-500 h-full group grid place-content-center  p-2 relative cursor-pointer"
+            <li class="hover:text-gray-500 h-full group grid place-content-center  p-1 relative cursor-pointer "
                 *ngIf="navigation.dropDown && navigation.children as children">
-                <span>{{ navigation.label }}</span>
+                <div class="flex flex-row gap-2 items-center"><span [innerHTML]="navigation.icon"></span> <span>{{
+                        navigation.label }}</span></div>
 
-                <div class="top-full hidden absolute group-hover:block hover:block group/item shadow-lg z-10">
+                <div
+                    class="top-full hidden absolute group-hover:block hover:block group/item shadow-lg z-100 rounded-b-lg   ">
                     <!-- <div class="absolute -top-5 left-0">
                         <div class="py-3">
                             <div class="w-4 h-4 absolute mt-1 bg-black rotate-45">
                             </div>
                         </div>
                     </div> -->
-                    <ul class="bg-[#F8F9FB] pt-1 pb-1"
+                    <ul class="bg-[#F8F9FB] pt-1 pb-1 "
                         [ngClass]="children.length > 6 ? 'grid grid-cols-3 gap-2 w-[36rem]' : 'flex flex-col w-[15rem]'">
-                        <li class="hover:bg-white flex  p-2 flex-row group relative items-center justify-between text-black hover:text-gray-500 z-10"
+                        <li class="hover:bg-white flex  p-2 flex-row group relative items-center justify-between text-black hover:text-gray-500 z-10 "
                             *ngFor="let item of navigation.children" (mouseenter)="activeItem = item"
                             (mouseleave)="activeItem = null">
                             <a [href]="item.path" *ngIf="item.label" class="w-full">
@@ -37,8 +39,14 @@
                 </div>
             </li>
             <li class="h-full" *ngIf="!navigation.dropDown"><a [href]="navigation.path"
-                    class="hover:text-gray-500 h-full grid place-content-center p-2">
-                    {{ navigation.label }} </a></li>
+                    class="hover:text-gray-500 h-full grid place-content-center p-1">
+                    <div class="flex flex-row gap-2 items-center">
+                        <span [innerHTML]="navigation.icon"></span>{{
+                        navigation.label }} 
+                    </div>
+                </a>
+
+            </li>
         </ul>
     </nav>
 

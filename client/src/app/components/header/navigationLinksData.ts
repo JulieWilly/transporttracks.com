@@ -5,6 +5,7 @@ export interface NavigationItem {
   label: string;
   path: string;
   dropDown: boolean;
+  icon?:string
   children?: NavigationItem[];
 }
 
@@ -15,6 +16,7 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
     label: 'Home',
     path: 'Common/dashboard',
     dropDown: false,
+    icon: '<i class="fa-solid fa-house"></i>',
   },
   {
     id: 'operations',
@@ -22,6 +24,7 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
     label: 'Operations',
     path: 'booking',
     dropDown: true,
+    icon: '<i class="fa-solid fa-briefcase"></i>',
     children: [
       {
         id: 'nav-booking',
@@ -363,6 +366,7 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
     label: 'Accounting',
     path: '',
     dropDown: true,
+    icon: '<i class="fa-solid fa-calculator"></i>',
     children: [
       {
         id: 'nav-accounts',
@@ -491,6 +495,7 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
     label: 'Reports',
     path: 'reports/managereports',
     dropDown: false,
+    icon: '<i class="fa-solid fa-folder-open"></i>',
   },
   {
     id: 'nav-settings',
@@ -498,5 +503,6 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
     label: 'Settings',
     path: 'settings/settingsmanagement',
     dropDown: false,
+    icon: '<i class="fa-solid fa-gears"></i>',
   },
 ];
